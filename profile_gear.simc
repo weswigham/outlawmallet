@@ -1,0 +1,16 @@
+head=,id=198324,enchant_id=7052,gem_id=192991,ilevel=489,crafted_stats=40
+neck=,id=208445,gem_id=192932/192932/192932,ilevel=489
+shoulder=,id=207234,ilevel=489
+back=,id=207160,ilevel=489
+chest=,id=207239,enchant_id=6625,enchant=waking_stats_3,ilevel=489
+wrist=,id=198327,gem_id=192932,ilevel=489,crafted_stats=40
+hands=,id=207237,ilevel=489
+waist=,id=193407,bonus_id=8797/8780/8960,gem_id=192991,ilevel=489,crafted_stats=32/40
+legs=,id=207235,enchant_id=6830,enchant=fierce_armor_kit_3,ilevel=489
+feet=,id=193452,enchant_id=6607,ilevel=489
+finger1=,id=192999,enchant=devotion_of_versatility_3,gem_id=192932,ilevel=489,crafted_stats=40/32
+finger2=,id=207162,enchant=devotion_of_versatility_3,gem_id=192932,ilevel=489
+trinket1=,id=207166,ilevel=489
+trinket2=,id=207165,ilevel=489
+main_hand=,id=210395,enchant=sophic_devotion_3,ilevel=489
+off_hand=,id=207996,enchant=sophic_devotion_3,ilevel=489

@@ -1,0 +1,194 @@
+
+    <html>
+        <head>
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <style>
+                body {
+                    background-color: #343a40;
+                    height: 100%;
+                }
+
+                .build-link {
+                    color: #f8f9fa;
+                    text-decoration: none;
+                }
+
+                .build-link:hover {
+                    color: magenta;
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="unique-id" style="height: 100%">Loading...</div>
+        <script>
+
+            const rankedData = [["HO ST | Crackshot + CTO + 2FTH + Vigor",266641,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCSSIJCSkkmkEtkIlkAAAAAAAaJJcgERhkSaBAAAQSCA"],["HO ST | Tea + 2FTH + GS (No Disp)",264364,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCSSIJCSkkmkEtkIlkAAAAAAAaJJIRUikSaBAAAQSCA"],["HO ST | Crackshot + Vigor (1pt Disp)",262795,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCHIJhk4AIRSaSS0SiUSCAAAAAAolkwBSEFSKpFAAAAJJA"],["HO ST | Crackshot + Tea (1pt Disp)",260961,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCHIJhk4AIRSaSS0SiUSCAAAAAAolkgERJSKpFAAAAJJA"],["HO ST | Crackshot + CTO + 2FTH",260642,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElkkEJCSSIJCSkkmkEtkIlkAAAAAAAaJJcgkEFokWAAAAkkAA"],["HO ST | Crackshot (1pt Disp)",259689,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElkkEJCHIJhk4AIRSaSS0SiUSCAAAAAAolkwBSSUgSaBAAAQSCA"],["HO ST | Crackshot + GSW + Vigor",259359,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCiESSCSkkmkEtkIlkAAAAAAAaJJcgERhkSaBAAAQSCA"],["HO ST | Crackshot + KiR (No Fan)",259233,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElkkEJikkESASkkmkEtkIlkAAAAAAAaJJcgkEFokWAAAAkkAA"],["HO ST | Crackshot + KiR + Vigor (No Fan)",257987,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJikkESASkkmkEtkIlkAAAAAAAaJJcgERhkSaBAAAQSCA"],["HO ST | Tea + 2FTH + GSW + GS (No CTO)",256986,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCiESSCSkkmkEtkIlkAAAAAAAaJJIRUikSaBAAAQSCA"],["HO ST | Crackshot + GSW",252248,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElkkEJCiESSCSkkmkEtkIlkAAAAAAAaJJcgkEFokWAAAAkkAA"],["HO ST | Crackshot + KS + 2FTH + Vigor",250747,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCiESigEJpJJRLJSJJAAAAAAgWSCHIRUIpkWAAAAkkEA"],["HO ST | Crackshot + KS + 2FTH",246372,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElkkEJCiESigEJpJJRLJSJJAAAAAAgWSCHIJRBKpFAAAAJJBA"],["HO ST | Crackshot + Vigor (1pt Disp) (No Dance)",242862,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCHIJhk4AIRSaSS0SIlkAAAAAAAaJJkERhkSaBAAAQSCA"],["KiR ST | Crackshot",241142,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRiIJJhkIIRolkEtkItkAAAAAAAaJJcgkEFokWAAAAkkAA"],["HO ST | Crackshot + KS + 2Disp (No Fan)",238697,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElkkEJCJJhEgEJpJJRLJSJJAAAAAAgWSCHIJRBKpFAAAAJJBA"],["KiR ST | Crackshot + Vigor",237267,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEEJRiIJJhkIIRolkEtkItkAAAAAAAaJJcgERhkSaBAAAQSCA"],["HO ST | Crackshot + KS + 2Disp + Vigor (No Fan)",237169,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCJJhEgEJpJJRLJSJJAAAAAAgWSCHIRUIpkWAAAAkkEA"],["KIR ST | Tea + 2FTH + GS",236323,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEEJRiIJJhkIIRolkEtkIlkAAAAAAAaJJIRUikSaBAAAQSCA"],["GSW ST | Crackshot",234443,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRiQSSIJJIRolkEtkItkAAAAAAAaJJcgkEFokWAAAAkkAA"],["GSW ST | Crackshot + Vigor",232106,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEEJRiQSSIJJIRolkEtkItkAAAAAAAaJJcgERhkSaBAAAQSCA"],["GSW ST | Tea + 2FTH",230558,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEEJRiQSSIJJIRolkEtkIlkAAAAAAAaJJIRUikSaBAAAQSCA"],["KiR ST | Crackshot + Vigor (No Dance)",223289,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRiIJJhkIIRolkEtESLJAAAAAAgWSCSSUIHokWAAAAkkAA"],["KS ST | Crackshot",221069,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRiQSSIJCSEaJJRLJSLJAAAAAAgWSCHIJRBKpFAAAAJJBA"],["GSW ST | Crackshot + Vigor (No Dance)",218745,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRiQSSIJJIRolkEtESLJAAAAAAgWSCSSUIHokWAAAAkkAA"],["KS ST | Crackshot + Vigor",217765,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEEJRiQSSIJCSEaJJRLJSLJAAAAAAgWSCHIRUIpkWAAAAkkEA"],["HO ST | KS + Wickers",213597,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJCiESSCSkkmkEtkIlkAAAAAAAaJJcgERhkSaBAAAQSEA"],["KiR ST | Crackshot + KS",213075,"BQQAAAAAAAAAAAAAAAAAAAAAAAAEkkEJikkESiDgEhmkElkIlkAAAAAAAaJJxBSEFSKpFAAAASSA"],["KS ST | Crackshot + Vigor (No Dance)",206411,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRiQSSIJCSEaJJRLh0SCAAAAAAolkgkEFyBKpFAAAAJJBA"],["KiR ST | Combat Rogue",187875,"BQQAAAAAAAAAAAAAAAAAAAAAAAAElEJRikkkESSCSEIJRLQRCAAAAAA0aJJRSSUIpkWAAAAIRA"]];
+            const absolute_damage_per_second = "Damage per second";
+            const bar_colors = ["#7cb5ec", "#d9d9df", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"];
+            const default_background_color = "#343a40";
+            const default_font_color = "#f8f9fa";
+            const default_axis_color = "#828282";
+            const font_size = "1.1rem";
+            const background_color = "#343a40";
+            const axis_color = "#828282";
+            const font_color = "#f8f9fa";
+            const styled_chart = {
+                accessibility: {
+                    enabled: false
+                },
+                chart: {
+                    type: "bar",
+                    backgroundColor: background_color,
+                    style: {
+                        fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\""
+                    }
+                },
+                colors: bar_colors,
+                legend: {
+                    align: "right",
+                    backgroundColor: background_color,
+                    borderColor: axis_color,
+                    borderWidth: 1,
+                    floating: false,
+                    itemMarginBottom: 3,
+                    itemMarginTop: 0,
+                    layout: 'vertical',
+                    reversed: true,
+                    shadow: false,
+                    verticalAlign: "middle",
+                    x: 0,
+                    y: 0,
+                    itemStyle: {
+                        color: font_color,
+                    },
+                    itemHoverStyle: {
+                        color: font_color,
+                    },
+                    title: {
+                        text: " ",
+                        style: {
+                            color: default_font_color
+                        }
+                    },
+                    symbolRadius: 0
+                },
+                series: [{
+                    name: "DPS",
+                    data: rankedData.map(t => t[1])
+                }],
+                title: {
+                    text: 'ST Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a href="https://github.com/simulationcraft/simc/commit/0452ed7a2465b5c79e1086df8734a06384c174c8">0452ed7a</a>)',
+                    useHTML: true,
+                    style: {
+                        color: font_color,
+                        fontSize: font_size
+                    }
+                },
+                tooltip: {
+                    headerFormat: "<b>{point.x}</b>",
+                    shared: true,
+                    backgroundColor: default_background_color,
+                    borderColor: default_axis_color,
+                    style: {
+                        color: default_font_color,
+                        fontSize: font_size,
+                    },
+                    useHTML: true,
+                },
+                xAxis: {
+                    categories: rankedData.map(t => `<a class="build-link" href="./talents/${t[2]}/index.html">${t[0]}</a>`),
+                    labels: {
+                        useHTML: true,
+                        style: {
+                            color: default_font_color,
+                            fontSize: font_size,
+                        }
+                    },
+                    gridLineWidth: 0,
+                    gridLineColor: default_axis_color,
+                    lineColor: default_axis_color,
+                    tickColor: default_axis_color
+                },
+                yAxis: [{
+                    labels: {
+                        style: {
+                            color: default_axis_color
+                        },
+                    },
+                    min: 0,
+                    stackLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            return Intl.NumberFormat().format(this.total);
+                        },
+                        style: {
+                            color: default_font_color,
+                            textOutline: false,
+                            fontSize: font_size,
+                            fontWeight: "normal"
+                        }
+                    },
+                    title: {
+                        text: absolute_damage_per_second,
+                        style: {
+                            color: default_axis_color
+                        }
+                    },
+                    gridLineWidth: 1,
+                    gridLineColor: default_axis_color
+                }, {
+                    linkedTo: 0,
+                    opposite: true,
+                    labels: {
+                        style: {
+                            color: default_axis_color
+                        },
+                    },
+                    min: 0,
+                    stackLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            return Intl.NumberFormat().format(this.total);
+                        },
+                        style: {
+                            color: default_font_color,
+                            textOutline: false,
+                            fontSize: font_size,
+                            fontWeight: "normal"
+                        }
+                    },
+                    title: {
+                        text: absolute_damage_per_second,
+                        style: {
+                            color: default_axis_color
+                        }
+                    },
+                    gridLineWidth: 1,
+                    gridLineColor: default_axis_color
+                }]
+            };
+            styled_chart.tooltip.backgroundColor = background_color;
+            styled_chart.tooltip.borderColor = axis_color;
+            styled_chart.tooltip.style.color = font_color;
+            styled_chart.xAxis.labels.style.color = font_color;
+            styled_chart.xAxis.gridLineColor = axis_color;
+            styled_chart.xAxis.lineColor = axis_color;
+            styled_chart.xAxis.tickColor = axis_color;
+            styled_chart.yAxis[0].labels.style.color = axis_color;
+            styled_chart.yAxis[0].stackLabels.style.color = font_color;
+            styled_chart.yAxis[0].gridLineColor = axis_color;
+            styled_chart.yAxis[0].lineColor = axis_color;
+            styled_chart.yAxis[0].tickColor = axis_color;
+            styled_chart.yAxis[0].title.style.color = axis_color;
+            styled_chart.yAxis[1].labels.style.color = axis_color;
+            styled_chart.yAxis[1].stackLabels.style.color = font_color;
+            styled_chart.yAxis[1].gridLineColor = axis_color;
+            styled_chart.yAxis[1].lineColor = axis_color;
+            styled_chart.yAxis[1].tickColor = axis_color;
+            styled_chart.yAxis[1].title.style.color = axis_color;
+            Highcharts.chart("unique-id", styled_chart);
+        </script>
+        </body>
+    </html>
+    
