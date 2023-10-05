@@ -297,7 +297,7 @@ function updateIndex(style) {
                     useHTML: true,
                 },
                 xAxis: {
-                    categories: rankedData.map(t => \`<a class="build-link" href="./talents/$\{t[2]\}/index.html">$\{t[0]\}</a>\`),
+                    categories: rankedData.map(t => \`<a class="build-link" target="_blank" href="./talents/$\{t[2]\}/index.html">$\{t[0]\}</a>\`),
                     labels: {
                         useHTML: true,
                         style: {
