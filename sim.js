@@ -9,7 +9,7 @@ const THREADS = 32;
  * @returns {object}
  */
 function execBloodmalletWorker(args, targetFile) {
-    const command = `docker run --mount type=bind,source="${process.cwd()}/results",target=/app/bloodytools/results -t bloodytools ${args} --threads=${THREADS}`;
+    const command = `docker run --mount type=bind,source="${process.cwd()}/results",target=/app/bloodytools/results -t ${args.indexOf("custom_profile") !== -1 ? "bloodytools_custom" : "bloodytools"} ${args} --threads=${THREADS}`;
     child_process.execSync(command, { stdio: "inherit" });
     const log = fs.readFileSync(`./results/${targetFile}`, { encoding: "utf-8" });
     return JSON.parse(log);
@@ -30,7 +30,7 @@ function execBloodmallet({profile, single_sim, ptr}) {
         ENTRYPOINT ["python3", "-m", "bloodytools", "--executable", "../SimulationCraft/engine/simc"]
         CMD ["--help"]\0`
         
-        child_process.execSync(`docker build -t bloodytools -`, { input: dockerfile, stdio: ["pipe", "inherit", "inherit"] });
+        child_process.execSync(`docker build -t bloodytools_custom -`, { input: dockerfile, stdio: ["pipe", "inherit", "inherit"] });
         
     }
     return execBloodmalletWorker(`${ptr ? "-ptr " : ""}${profile ? "--custom_profile " : ""}--single_sim="${single_sim}"`, `${single_sim.split(",")[0]}/${single_sim.split(",").slice(1).join("_")}.json`);
@@ -57,10 +57,11 @@ function getSimcHash() {
 }
 
 /**
+ * @param {string} style 
  * @param {string} talentString 
  */
-function getMaxDps(talentString) {
-    const data = JSON.parse(fs.readFileSync(`./docs/talents/${talentString}/secondary_distributions.json`, { encoding: "utf-8" }));
+function getMaxDps(style, talentString) {
+    const data = JSON.parse(fs.readFileSync(`./docs/${style}/talents/${talentString}/secondary_distributions.json`, { encoding: "utf-8" }));
     return data.data.baseline[data.sorted_data_keys.baseline[0]];
 }
 
@@ -93,21 +94,33 @@ const toolsHash = getBloodytoolsHash();
 console.log(`Simc hash: ${simcHash}
 tools hash: ${toolsHash}`);
 
-for (const [name, talent] of talents) {
-    const dataPath = `./docs/talents/${talent}/secondary_distributions.json`;
-    let result;
-    try {
-        const maybeResult = JSON.parse(fs.readFileSync(dataPath, { encoding: "utf-8" }));
-        if (maybeResult?.metadata?.SimulationCraft === simcHash && maybeResult?.metadata?.bloodytools === toolsHash) {
-            result = maybeResult;
-            console.log(`Results for ${name} already generated, skipping...`);
+const fightStyles = [
+    "castingpatchwerk",
+    "castingpatchwerk8",
+    "castingpatchwerk5",
+    "castingpatchwerk3",
+    // "dungeonslice", // Dungeonslice secondary distribution sims take over an hour per sim, compared with 5-10 minutes for the patchwerks. Ain't nobody got time for that.
+];
+
+/**
+ * @param {string} style 
+ */
+function collectDataForFightStyle(style) {
+    for (const [name, talent] of talents) {
+        const dataPath = `./docs/${style}/talents/${talent}/secondary_distributions.json`;
+        let result;
+        try {
+            const maybeResult = JSON.parse(fs.readFileSync(dataPath, { encoding: "utf-8" }));
+            if (maybeResult?.metadata?.SimulationCraft === simcHash && maybeResult?.metadata?.bloodytools === toolsHash) {
+                result = maybeResult;
+                console.log(`Results for ${name} already generated, skipping...`);
+            }
         }
-    }
-    catch (_) {}
-    if (!result) {
-        console.log(`Simulating secondary distributions for ${name}...`);
-        result = execBloodmallet({single_sim: "secondary_distributions,rogue,outlaw,castingpatchwerk", ptr: true, profile:
-`rogue="${name}"
+        catch (_) {}
+        if (!result) {
+            console.log(`Simulating secondary distributions for ${name}...`);
+            result = execBloodmallet({single_sim: `secondary_distributions,rogue,outlaw,${style}`, ptr: true, profile:
+    `rogue="${name}"
 spec=outlaw
 level=70
 race=tauren
@@ -115,28 +128,32 @@ role=attack
 position=back
 ${baseProfile}
 talents=${talent}`});
-        result.title = result.title.replace("Outlaw Rogue", `Outlaw Rogue - ${name}`);
-        fs.mkdirSync(`./docs/talents/${talent}`, { recursive: true });
-        fs.writeFileSync(dataPath, JSON.stringify(result, null, 4));
-    }
-    // always regenerate the html, so any updates made to the chart style are applied immediately on run
-    fs.writeFileSync(`./docs/talents/${talent}/index.html`,
-`
+            result.title = result.title.replace("Outlaw Rogue", `Outlaw Rogue - ${name}`);
+            fs.mkdirSync(`./docs/${style}/talents/${talent}`, { recursive: true });
+            fs.writeFileSync(dataPath, JSON.stringify(result, null, 4));
+        }
+        // always regenerate the html, so any updates made to the chart style are applied immediately on run
+        fs.writeFileSync(`./docs/${style}/talents/${talent}/index.html`,
+    `
 <html>
     <head>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/highcharts-3d.js"></script>
         <script src="https://bloodmallet.com/js/bloodmallet_chart_import.min.js"></script>
+        <title>Outlawmallet - Secondary Distribution - ${style} - ${talent}</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <style>
             body {
                 background-color: #343a40;
             }
+            iframe {
+                border: none;
+            }
         </style>
     </head>
     <body>
-        <div style="display: grid; width: 100%; grid-template-columns: repeat(3, 1fr); gap: 10px; grid-auto-rows: minmax(100px, auto);">
+        <div style="display: grid; width: 100%; gap: 10px; justify-items: center;">
         <div
-        style="grid-column: 2 / 4;"
         id="unique-id" 
         class="bloodmallet_chart" 
         data-wow-class="rogue" 
@@ -150,36 +167,43 @@ talents=${talent}`});
         data-axis-color="#828282"
         data-language="en"
         data-loaded-data=""
-      >Loading...</div>
-      <div style="grid-column: 2 / 4; color: #f8f9fa;">
-      <iframe src="https://mimiron.raidbots.com/simbot/render/talents/${talent}?bgcolor=343a40&amp;level=70&amp;width=208&amp;mini=1" width="208" height="125" style="float:left; margin-right: 10px; margin-top: 5px;"></iframe>
-      <code>${talent}</code>
-      </div>
-      </div>
-      <script>
+        >Loading...</div>
+        <div style="color: #f8f9fa;">
+        <iframe src="https://mimiron.raidbots.com/simbot/render/talents/${talent}?bgcolor=343a40&amp;level=70&amp;width=800" width="800" height="570"></iframe>
+        </div>
+        </div>
+        <script>
         document.getElementById("unique-id").dataset.loadedData = \`${JSON.stringify(result).replaceAll(`\\`, `\\\\`)}\`
-      </script>
+        </script>
     </body>
 </html>
-`);
-    updateIndex();
+    `);
+    }
 }
 
-function updateIndex() {
-    const rankedData = talents.map(([name, talentString]) => [name, fs.existsSync(`./docs/talents/${talentString}/secondary_distributions.json`) ? getMaxDps(talentString) : undefined, talentString]).filter(t => !!t[1]);
+/**
+ * @param {string} style 
+ */
+function updateIndex(style) {
+    const rankedData = talents.map(([name, talentString]) => [name, fs.existsSync(`./docs/${style}/talents/${talentString}/secondary_distributions.json`) ? getMaxDps(style, talentString) : undefined, talentString]).filter(t => !!t[1]);
     rankedData.sort((a, b) => b[1] - a[1]);
 
 // This chart layout is roughly extracted from https://bloodmallet.com/js/bloodmallet_chart_import.min.js, just so it visually matches the style of the bloodmallet charts
 // There's maybe enough copied here to warrant some kind of license disclaimer, but said js file doesn't have one, and neither does its' source repo, so... 🤷‍♂️
 // Just know it's mostly sourced form there, and you should thank bloodmallet.com for the styles.
-    fs.writeFileSync("./docs/index.html", `
+    fs.writeFileSync(`./docs/${style}/index.html`, `
     <html>
         <head>
             <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <title>Outlawmallet - ${style} - Talents</title>
+            <link rel="icon" type="image/x-icon" href="/favicon.ico">
             <style>
                 body {
                     background-color: #343a40;
                     height: 100%;
+                    min-height: ${talents.length * 2.5}em;
+                    margin: 0px;
                 }
 
                 .build-link {
@@ -199,7 +223,7 @@ function updateIndex() {
 
             const rankedData = ${JSON.stringify(rankedData)};
             const absolute_damage_per_second = "Damage per second";
-            const bar_colors = ["#7cb5ec", "#d9d9df", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"];
+            const bar_colors = ["#e4d354"];
             const default_background_color = "#343a40";
             const default_font_color = "#f8f9fa";
             const default_axis_color = "#828282";
@@ -207,7 +231,63 @@ function updateIndex() {
             const background_color = "#343a40";
             const axis_color = "#828282";
             const font_color = "#f8f9fa";
+            const makeRelative = function() {
+                this.yAxis[0].setTitle({text: "Δ% From Best DPS"});
+                this.yAxis[1].setTitle({text: "Δ% From Best DPS"});
+                this.series[0].setName("Δ% DPS");
+                this.series[0].setData(
+                    rankedData.map(t => Math.floor((1 - t[1]/rankedData[0][1]) * -10000)/100)
+                );
+                this.yAxis[0].setExtremes((1 - rankedData[rankedData.length - 1][1]/rankedData[0][1]) * -100, 0);
+                this.exporting.update({
+                    buttons: {
+                        contextButton: { enabled: false },
+                        toggleButton: { text: "Absolute", onclick: makeAbsolute }
+                    }
+                });
+            }
+            const makeAbsolute = function() {
+                this.yAxis[0].setTitle({text: absolute_damage_per_second});
+                this.yAxis[1].setTitle({text: absolute_damage_per_second});
+                this.series[0].setName("DPS");
+                this.series[0].setData(
+                    rankedData.map(t => t[1])
+                );
+                this.yAxis[0].setExtremes(0, rankedData[0][1]);
+                this.exporting.update({
+                    buttons: {
+                        contextButton: { enabled: false },
+                        toggleButton: { text: "Relative", onclick: makeRelative }
+                    }
+                });
+            }
             const styled_chart = {
+                navigation: {
+                    buttonOptions: {
+                        theme: {
+                            fill: default_axis_color
+                        }
+                    }
+                },
+                exporting: {
+                    buttons: {
+                        contextButton: {
+                            enabled: false
+                        },
+                        toggleButton: {
+                            text: "Relative",
+                            onclick: makeRelative
+                        },
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            align: "right",
+                            enabled: true
+                        }
+                    }
+                },
                 credits: {
                     enabled: true,
                     href: "https://github.com/weswigham/outlawmallet",
@@ -257,7 +337,7 @@ function updateIndex() {
                     data: rankedData.map(t => t[1])
                 }],
                 title: {
-                    text: 'ST Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a href="https://github.com/simulationcraft/simc/commit/${simcHash}">${simcHash.slice(0,8)}</a>)',
+                    text: '${style} Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a href="https://github.com/simulationcraft/simc/commit/${simcHash}">${simcHash.slice(0,8)}</a>)',
                     useHTML: true,
                     style: {
                         color: font_color,
@@ -276,7 +356,7 @@ function updateIndex() {
                     useHTML: true,
                 },
                 xAxis: {
-                    categories: rankedData.map(t => \`<a class="build-link" href="./talents/$\{t[2]\}/index.html">$\{t[0]\}</a>\`),
+                    categories: rankedData.map(t => \`<a class="build-link" target="_blank" href="./talents/$\{t[2]\}/index.html">$\{t[0]\}</a>\`),
                     labels: {
                         useHTML: true,
                         style: {
@@ -372,3 +452,35 @@ function updateIndex() {
     </html>
     `);
 }
+
+for (const style of fightStyles) {
+    collectDataForFightStyle(style);
+    updateIndex(style);
+}
+
+fs.writeFileSync("./docs/index.html", `
+<html>
+    <head>
+        <title>Outlawmallet</title>
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+        <style>
+            iframe {
+                height: 100%;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                border: none;
+                min-height: ${talents.length * 2.5}em;
+            }
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe src="./castingpatchwerk/index.html"></iframe>
+        <iframe src="./castingpatchwerk3/index.html"></iframe>
+        <iframe src="./castingpatchwerk5/index.html"></iframe>
+        <iframe src="./castingpatchwerk8/index.html"></iframe>
+    </body>
+</html>`);
