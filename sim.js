@@ -203,6 +203,7 @@ function updateIndex(style) {
                 body {
                     background-color: #343a40;
                     height: 100%;
+                    margin: 0px;
                 }
 
                 .build-link {
