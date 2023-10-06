@@ -203,6 +203,7 @@ function updateIndex(style) {
                 body {
                     background-color: #343a40;
                     height: 100%;
+                    min-height: ${talents.length * 2.5}em;
                     margin: 0px;
                 }
 
@@ -457,3 +458,30 @@ for (const style of fightStyles) {
     collectDataForFightStyle(style);
     updateIndex(style);
 }
+
+fs.writeFileSync("./docs/index.html", `
+<html>
+    <head>
+        <title>Outlawmallet</title>
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+        <style>
+            iframe {
+                height: 100%;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                border: none;
+                min-height: ${talents.length * 2.5}em;
+            }
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe src="./castingpatchwerk/index.html"></iframe>
+        <iframe src="./castingpatchwerk3/index.html"></iframe>
+        <iframe src="./castingpatchwerk5/index.html"></iframe>
+        <iframe src="./castingpatchwerk8/index.html"></iframe>
+    </body>
+</html>`);
