@@ -96,6 +96,7 @@ tools hash: ${toolsHash}`);
 
 const fightStyles = [
     "castingpatchwerk",
+    "castingpatchwerk8",
     "castingpatchwerk5",
     "castingpatchwerk3",
     // "dungeonslice", // Dungeonslice secondary distribution sims take over an hour per sim, compared with 5-10 minutes for the patchwerks. Ain't nobody got time for that.
@@ -195,6 +196,7 @@ function updateIndex(style) {
     <html>
         <head>
             <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
             <title>Outlawmallet - ${style} - Talents</title>
             <link rel="icon" type="image/x-icon" href="/favicon.ico">
             <style>
@@ -220,7 +222,7 @@ function updateIndex(style) {
 
             const rankedData = ${JSON.stringify(rankedData)};
             const absolute_damage_per_second = "Damage per second";
-            const bar_colors = ["#7cb5ec", "#d9d9df", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"];
+            const bar_colors = ["#e4d354"];
             const default_background_color = "#343a40";
             const default_font_color = "#f8f9fa";
             const default_axis_color = "#828282";
@@ -228,7 +230,63 @@ function updateIndex(style) {
             const background_color = "#343a40";
             const axis_color = "#828282";
             const font_color = "#f8f9fa";
+            const makeRelative = function() {
+                this.yAxis[0].setTitle({text: "Δ% From Best DPS"});
+                this.yAxis[1].setTitle({text: "Δ% From Best DPS"});
+                this.series[0].setName("Δ% DPS");
+                this.series[0].setData(
+                    rankedData.map(t => Math.floor((1 - t[1]/rankedData[0][1]) * -10000)/100)
+                );
+                this.yAxis[0].setExtremes((1 - rankedData[rankedData.length - 1][1]/rankedData[0][1]) * -100, 0);
+                this.exporting.update({
+                    buttons: {
+                        contextButton: { enabled: false },
+                        toggleButton: { text: "Absolute", onclick: makeAbsolute }
+                    }
+                });
+            }
+            const makeAbsolute = function() {
+                this.yAxis[0].setTitle({text: absolute_damage_per_second});
+                this.yAxis[1].setTitle({text: absolute_damage_per_second});
+                this.series[0].setName("DPS");
+                this.series[0].setData(
+                    rankedData.map(t => t[1])
+                );
+                this.yAxis[0].setExtremes(0, rankedData[0][1]);
+                this.exporting.update({
+                    buttons: {
+                        contextButton: { enabled: false },
+                        toggleButton: { text: "Relative", onclick: makeRelative }
+                    }
+                });
+            }
             const styled_chart = {
+                navigation: {
+                    buttonOptions: {
+                        theme: {
+                            fill: default_axis_color
+                        }
+                    }
+                },
+                exporting: {
+                    buttons: {
+                        contextButton: {
+                            enabled: false
+                        },
+                        toggleButton: {
+                            text: "Relative",
+                            onclick: makeRelative
+                        },
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            align: "right",
+                            enabled: true
+                        }
+                    }
+                },
                 credits: {
                     enabled: true,
                     href: "https://github.com/weswigham/outlawmallet",
