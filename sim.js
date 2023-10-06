@@ -152,9 +152,8 @@ talents=${talent}`});
         </style>
     </head>
     <body>
-        <div style="display: grid; width: 100%; grid-template-columns: repeat(3, 1fr); gap: 10px; grid-auto-rows: minmax(100px, auto);">
+        <div style="display: grid; width: 100%; gap: 10px; justify-items: center;">
         <div
-        style="grid-column: 2 / 4;"
         id="unique-id" 
         class="bloodmallet_chart" 
         data-wow-class="rogue" 
@@ -169,7 +168,7 @@ talents=${talent}`});
         data-language="en"
         data-loaded-data=""
         >Loading...</div>
-        <div style="grid-column: 2 / 4; color: #f8f9fa;">
+        <div style="color: #f8f9fa;">
         <iframe src="https://mimiron.raidbots.com/simbot/render/talents/${talent}?bgcolor=343a40&amp;level=70&amp;width=800" width="800" height="570"></iframe>
         </div>
         </div>
