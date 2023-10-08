@@ -63,11 +63,11 @@ function getBloodytoolsHash() {
 function getSimcHash() {
     const dockerfile =
     `FROM bloodytools
-    ENTRYPOINT ["cat"]
-    CMD ["../SimulationCraft/.git/refs/heads/dragonflight"]\0`
+    ENTRYPOINT ["../SimulationCraft/simc"]
+    CMD ["display_build=1", "spell_query=spell.id=0"]\0`
     child_process.execSync(`docker build -t bloodytools_simc_hash -`, { input: dockerfile, stdio: ["pipe", "inherit", "inherit"] });
     const output = child_process.execSync(`docker run bloodytools_simc_hash`, { encoding: "utf-8" });
-    return (output || "").trim();
+    return /git build \w+ ([^\)]+)/.exec(output || "")?.[1] || "";
 }
 
 /**
@@ -100,7 +100,7 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
         let result;
         try {
             const maybeResult = JSON.parse(fs.readFileSync(dataPath, { encoding: "utf-8" }));
-            if (noSim || (maybeResult?.metadata?.SimulationCraft === simcHash && maybeResult?.metadata?.bloodytools === toolsHash)) {
+            if (noSim || ((maybeResult?.metadata?.SimulationCraft || "").startsWith(simcHash) && maybeResult?.metadata?.bloodytools === toolsHash)) {
                 result = maybeResult;
                 result.title = result.title.replace(/\| Outlaw Rogue .*\|/, `| Outlaw Rogue - ${name} |`);
                 console.log(`Results for ${name} already generated, skipping...`);
