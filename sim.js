@@ -41,7 +41,7 @@ function execBloodmallet({profile, single_sim, ptr}) {
         `FROM bloodytools
         RUN rm ./custom_profile.txt
         RUN echo $'${profile.split("\n").join("\\n\\\n")}' >> ./custom_profile.txt
-        ENTRYPOINT ["python3", "-m", "bloodytools", "--executable", "../SimulationCraft/engine/simc"]
+        ENTRYPOINT ["python3", "-m", "bloodytools"]
         CMD ["--help"]\0`
         
         child_process.execSync(`docker build -t bloodytools_custom -`, { input: dockerfile, stdio: ["pipe", "inherit", "inherit"] });
