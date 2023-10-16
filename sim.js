@@ -17,7 +17,7 @@ import os from "os";
  * }} Context
  */
 
-const THREADS = os.cpus().length;
+const THREADS = os.availableParallelism ? os.availableParallelism() : os.cpus().length;
 /**
  * @param {string} args 
  * @param {string} targetFile
