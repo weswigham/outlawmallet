@@ -2,6 +2,7 @@
 import child_process from "child_process";
 import fs from "fs";
 import process from "process";
+import os from "os";
 
 /**
  * @typedef {{ 
@@ -16,7 +17,7 @@ import process from "process";
  * }} Context
  */
 
-const THREADS = 32;
+const THREADS = os.cpus().length;
 /**
  * @param {string} args 
  * @param {string} targetFile
