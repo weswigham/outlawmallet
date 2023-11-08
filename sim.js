@@ -114,7 +114,7 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
                 continue;
             }
             console.log(`Simulating secondary distributions for ${name}...`);
-            result = execBloodmallet({single_sim: `secondary_distributions,rogue,outlaw,${style}`, ptr: true, profile:
+            result = execBloodmallet({single_sim: `secondary_distributions,rogue,outlaw,${style}`, profile:
     `rogue="${name}"
 spec=outlaw
 level=70
