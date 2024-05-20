@@ -6,6 +6,7 @@ import os from "os";
 
 /**
  * @typedef {{ 
+ *  outputPath: string,
  *  talents: (readonly [name: string, talentString: string])[],
  *  talentSet: Set<string>,
  *  simcHash: string,
@@ -73,10 +74,11 @@ function getSimcHash() {
 
 /**
  * @param {string} style 
- * @param {string} talentString 
+ * @param {string} talentString
+ * @param {string} outputPath
  */
-function getMaxDps(style, talentString) {
-    const data = JSON.parse(fs.readFileSync(`./docs/${style}/talents/${talentString}/secondary_distributions.json`, { encoding: "utf-8" }));
+function getMaxDps(style, talentString, outputPath) {
+    const data = JSON.parse(fs.readFileSync(`${outputPath}/${style}/talents/${talentString}/secondary_distributions.json`, { encoding: "utf-8" }));
     return data.data.baseline[data.sorted_data_keys.baseline[0]];
 }
 
@@ -84,11 +86,11 @@ function getMaxDps(style, talentString) {
  * @param {string} style
  * @param {Context} param1
  */
-function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount }) {
-    fs.readdirSync(`./docs/${style}/talents`).forEach(d => {
+function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount, outputPath }) {
+    fs.readdirSync(`${outputPath}/${style}/talents`).forEach(d => {
         if (!talentSet.has(d)) {
             console.log(`${style} talent build ${d} no longer being tracked, removing...`);
-            fs.rmSync(`./docs/${style}/talents/${d}`, { recursive: true, force: true });
+            fs.rmSync(`${outputPath}/${style}/talents/${d}`, { recursive: true, force: true });
         }
     });
     let i = -1;
@@ -97,7 +99,7 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
         if ((shard !== undefined) && (i % shardCount !== shard)) {
             continue;
         }
-        const dataPath = `./docs/${style}/talents/${talent}/secondary_distributions.json`;
+        const dataPath = `${outputPath}/${style}/talents/${talent}/secondary_distributions.json`;
         let result;
         try {
             const maybeResult = JSON.parse(fs.readFileSync(dataPath, { encoding: "utf-8" }));
@@ -117,18 +119,17 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
             result = execBloodmallet({single_sim: `secondary_distributions,rogue,outlaw,${style}`, profile:
     `rogue="${name}"
 spec=outlaw
-level=70
 race=tauren
 role=attack
 position=back
 ${baseProfile}
 talents=${talent}`});
             result.title = result.title.replace("Outlaw Rogue", `Outlaw Rogue - ${name}`);
-            fs.mkdirSync(`./docs/${style}/talents/${talent}`, { recursive: true });
+            fs.mkdirSync(`${outputPath}/${style}/talents/${talent}`, { recursive: true });
             fs.writeFileSync(dataPath, JSON.stringify(result, null, 4));
         }
         // always regenerate the html, so any updates made to the chart style are applied immediately on run
-        fs.writeFileSync(`./docs/${style}/talents/${talent}/index.html`,
+        fs.writeFileSync(`${outputPath}/${style}/talents/${talent}/index.html`,
     `
 <html>
     <head>
@@ -181,15 +182,15 @@ talents=${talent}`});
  * @param {string} style
  * @param {Context} param1
  */
-function updateIndex(style, { talents, simcHash, shard }) {
+function updateIndex(style, { talents, simcHash, shard, outputPath }) {
     if (shard !== undefined) return; // Shard is producing partial results, don't update aggregate files
-    const rankedData = talents.map(([name, talentString]) => [name, fs.existsSync(`./docs/${style}/talents/${talentString}/secondary_distributions.json`) ? getMaxDps(style, talentString) : undefined, talentString]).filter(t => !!t[1]);
+    const rankedData = talents.map(([name, talentString]) => [name, fs.existsSync(`${outputPath}/${style}/talents/${talentString}/secondary_distributions.json`) ? getMaxDps(style, talentString, outputPath) : undefined, talentString]).filter(t => !!t[1]);
     rankedData.sort((a, b) => b[1] - a[1]);
 
 // This chart layout is roughly extracted from https://bloodmallet.com/js/bloodmallet_chart_import.min.js, just so it visually matches the style of the bloodmallet charts
 // There's maybe enough copied here to warrant some kind of license disclaimer, but said js file doesn't have one, and neither does its' source repo, so... 🤷‍♂️
 // Just know it's mostly sourced form there, and you should thank bloodmallet.com for the styles.
-    fs.writeFileSync(`./docs/${style}/index.html`, `
+    fs.writeFileSync(`${outputPath}/${style}/index.html`, `
 <html>
     <head>
         <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -350,7 +351,7 @@ function updateIndex(style, { talents, simcHash, shard }) {
                 data: rankedData.map(t => t[1])
             }],
             title: {
-                text: '${style} Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a href="https://github.com/simulationcraft/simc/commit/${simcHash}">${simcHash.slice(0,8)}</a>)',
+                text: '${style} Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/${simcHash}">${simcHash.slice(0,8)}</a>)',
                 useHTML: true,
                 style: {
                     color: font_color,
@@ -469,14 +470,14 @@ function updateIndex(style, { talents, simcHash, shard }) {
 /**
  * @param {Context} param0 
  */
-function writeRootIndex({ talents, shard }) {
+function writeRootIndex({ talents, shard, outputPath }) {
     if (shard !== undefined) return; // Shard is producing partial results, don't update aggregate files
-    fs.writeFileSync("./docs/index.html", `
+    fs.writeFileSync(`${outputPath}/index.html`, `
 <html>
     <head>
         <title>Outlawmallet</title>
         <meta name="description" content="Outlaw Rogue talent dps charts">
-        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <style>
             iframe {
                 height: 100%;
@@ -510,6 +511,7 @@ function simulateAndRebuild(args) {
 When run with no arguments, this script updates all secondary distribution sim results
 and presentation html files in the docs folder. Available options:
     --help                  Print this message
+    --output=[path]         Output directory for these sims = ./docs by default
     --style=[fightstyle]    Just update [fightstyle] results. Eg, castingpatchwerk, castingpatchwerk8, or dungeonslice.
     --no-sim                Use the results cached on disk only, and just update the html presentation files.
     --shard-count=[N]       Used with --shard, specifies how many shards are in use.
@@ -519,6 +521,7 @@ and presentation html files in the docs folder. Available options:
         return;
     }
     const noSim = !!args.find(a => a.startsWith("--no-sim"));
+    let outputPath = args.find(a => a.startsWith("--output="))?.slice("--output=".length);
     const style = args.find(a => a.startsWith("--style="))?.slice("--style=".length);
     const shard = args.find(a => a.startsWith("--shard="))?.slice("--shard=".length);
     const shardCount = args.find(a => a.startsWith("--shard-count="))?.slice("--shard-count=".length);
@@ -533,6 +536,9 @@ and presentation html files in the docs folder. Available options:
     if (shardCount && Number(shardCount) !== Number(shardCount)) {
         console.log(`--shard-count=[N] must be a number.`);
         return;
+    }
+    if (!outputPath) {
+        outputPath = "./docs";
     }
 
     const talentFileContents = fs.readFileSync("./outlaw-talent-builds.simc", { encoding: "utf-8" });
@@ -576,7 +582,7 @@ tools hash: ${toolsHash}`);
     /**
      * @type {Context}
      */
-    const opts = { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard: shard && Number(shard), shardCount: shardCount && Number(shardCount) };
+    const opts = { outputPath, talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard: shard && Number(shard), shardCount: shardCount && Number(shardCount) };
 
     if (opts.shard) {
         console.log(`Generating results for shard id ${opts.shard} (${opts.shardCount} total shards)...`);
