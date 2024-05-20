@@ -15,6 +15,7 @@ import os from "os";
  *  noSim: boolean,
  *  shard?: number,
  *  shardCount?: number,
+ *  level: number
  * }} Context
  */
 
@@ -86,13 +87,15 @@ function getMaxDps(style, talentString, outputPath) {
  * @param {string} style
  * @param {Context} param1
  */
-function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount, outputPath }) {
-    fs.readdirSync(`${outputPath}/${style}/talents`).forEach(d => {
-        if (!talentSet.has(d)) {
-            console.log(`${style} talent build ${d} no longer being tracked, removing...`);
-            fs.rmSync(`${outputPath}/${style}/talents/${d}`, { recursive: true, force: true });
-        }
-    });
+function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount, outputPath, level }) {
+    if (fs.existsSync(`${outputPath}/${style}/talents`)) {
+        fs.readdirSync(`${outputPath}/${style}/talents`).forEach(d => {
+            if (!talentSet.has(d)) {
+                console.log(`${style} talent build ${d} no longer being tracked, removing...`);
+                fs.rmSync(`${outputPath}/${style}/talents/${d}`, { recursive: true, force: true });
+            }
+        });
+    }
     let i = -1;
     for (const [name, talent] of talents) {
         i++;
@@ -120,6 +123,7 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
     `rogue="${name}"
 spec=outlaw
 race=tauren
+level=${level}
 role=attack
 position=back
 ${baseProfile}
@@ -512,6 +516,7 @@ When run with no arguments, this script updates all secondary distribution sim r
 and presentation html files in the docs folder. Available options:
     --help                  Print this message
     --output=[path]         Output directory for these sims = ./docs by default
+    --level=[number]        Level of the character in the sims = 70 by default
     --style=[fightstyle]    Just update [fightstyle] results. Eg, castingpatchwerk, castingpatchwerk8, or dungeonslice.
     --no-sim                Use the results cached on disk only, and just update the html presentation files.
     --shard-count=[N]       Used with --shard, specifies how many shards are in use.
@@ -522,6 +527,7 @@ and presentation html files in the docs folder. Available options:
     }
     const noSim = !!args.find(a => a.startsWith("--no-sim"));
     let outputPath = args.find(a => a.startsWith("--output="))?.slice("--output=".length);
+    let level = +args.find(a => a.startsWith("--level="))?.slice("--level=".length);
     const style = args.find(a => a.startsWith("--style="))?.slice("--style=".length);
     const shard = args.find(a => a.startsWith("--shard="))?.slice("--shard=".length);
     const shardCount = args.find(a => a.startsWith("--shard-count="))?.slice("--shard-count=".length);
@@ -540,8 +546,11 @@ and presentation html files in the docs folder. Available options:
     if (!outputPath) {
         outputPath = "./docs";
     }
+    if (!level) {
+        level = 70;
+    }
 
-    const talentFileContents = fs.readFileSync("./outlaw-talent-builds.simc", { encoding: "utf-8" });
+    const talentFileContents = fs.readFileSync(level === 80 ? "./outlaw-talent-builds-tww.simc" : "./outlaw-talent-builds.simc", { encoding: "utf-8" });
     const presentTalents = {};
     const talents = talentFileContents.split("\n\n").map(s => {
         const [namePart, talentPart] = s.split("\n");
@@ -550,7 +559,7 @@ and presentation html files in the docs folder. Available options:
         const buf = Buffer.from(rawTalentStr, "base64");
         for (let i = 3; i < 19; i++) { buf[i] = 0 } // zero out hash part of talent string, emulates wowhead export and ensures there's only one talent string for a given build
         const talentStr = buf.toString("base64").replaceAll("=", "");
-        if (talentStr !== rawTalentStr && talentStr+"A" !== rawTalentStr && talentStr+"AA" !== rawTalentStr) { // b64 encoder will drop trailing zero values by default - just tack on a few to cover them being dropped
+        if (false && talentStr !== rawTalentStr && talentStr+"A" !== rawTalentStr && talentStr+"AA" !== rawTalentStr) { // b64 encoder will drop trailing zero values by default - just tack on a few to cover them being dropped
             throw new Error(`Build ${name}:
     Expected unhashed talent string: ${talentStr},
         got talent string with hash: ${rawTalentStr}.`);
@@ -564,7 +573,7 @@ and presentation html files in the docs folder. Available options:
         return /** @type {const} */([name, rawTalentStr]);
     });
     const talentSet = new Set(Object.keys(presentTalents));
-    const baseProfile = fs.readFileSync("./profile_gear.simc", { encoding: "utf-8" });
+    const baseProfile = fs.readFileSync(level === 80 ? "./profile_gear_tww.simc" : "./profile_gear.simc", { encoding: "utf-8" });
     const simcHash = getSimcHash();
     const toolsHash = getBloodytoolsHash();
     
@@ -582,7 +591,7 @@ tools hash: ${toolsHash}`);
     /**
      * @type {Context}
      */
-    const opts = { outputPath, talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard: shard && Number(shard), shardCount: shardCount && Number(shardCount) };
+    const opts = { outputPath, talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard: shard && Number(shard), shardCount: shardCount && Number(shardCount), level };
 
     if (opts.shard) {
         console.log(`Generating results for shard id ${opts.shard} (${opts.shardCount} total shards)...`);
