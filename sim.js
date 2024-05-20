@@ -170,7 +170,7 @@ talents=${talent}`});
         data-loaded-data=""
         >Loading...</div>
         <div style="color: #f8f9fa;">
-        <iframe src="https://mimiron.raidbots.com/simbot/render/talents/${talent}?bgcolor=343a40&amp;level=70&amp;width=800" width="800" height="570"></iframe>
+        <iframe src="https://mimiron.raidbots.com/simbot/render/talents/${talent}?bgcolor=343a40&amp;level=${level}&amp;width=800" width="800" height="570"></iframe>
         </div>
         </div>
         <script>
