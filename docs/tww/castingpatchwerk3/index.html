@@ -3,7 +3,7 @@
     <head>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <title>Outlawmallet - castingpatchwerk - Talents</title>
+        <title>Outlawmallet - castingpatchwerk3 - Talents</title>
         <meta name="description" content="Outlaw Rogue talent dps charts">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <style>
@@ -29,7 +29,7 @@
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
 
-        const rankedData = [["ST Fatebound KIR+CS | ER+No Vigor",293343,"BQQAEYZuxxya69qT++xgdWvyoAAElEJRiIJJhEiIRIJJRJRaJAAAAAAoUiEOQSiCUSLAAAASSACiWaSSCJpQKUaRhiE"],["ST Fatebound HO+CS | Tea",292947,"BQQAEYZuxxya69qT++xgdWvyoAAEIJRigkESIiEJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["AoE Fatebound KIR+CS | ER+No Vigor",282366,"BQQAEYZuxxya69qT++xgdWvyoAAElEEJJSSSIhQSSIJJRJRaJAAAAAAoUiEOQSiCUSLAAAASSACiWaSSCJpQKUaRhiE"],["AoE Fatebound HO+CS | Tea",280507,"BQQAEYZuxxya69qT++xgdWvyoAAEISkIIJhECJJJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["ST Fatebound HO+CS",279773,"BQQAEYZuxxya69qT++xgdWvyoAAElkkEJCSSIhISkkIJRJRKJAAAAAAQLJJOQSiCUSJAAAAkEgAaQiQkGgSgiE"],["ST Fatebound HO+CS | Tea+Dispatcher",269853,"BQQAEYZuxxya69qT++xgdWvyoAAEIJkIcgkESIiEJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["AoE Fatebound HO+CS",267370,"BQQAEYZuxxya69qT++xgdWvyoAAElkIRigkESIkkkkIJRJRKJAAAAAAQLJJOQSiCUSJAAAAkEgAaQiQkGgSgiE"],["ST Fatebound KiR+GSW",261602,"BQQAEYZuxxya69qT++xgdWvyoAAEEJRiIJJhEJiEBJJRJolAAAAAAgmkkkkkoEJlUCAAAAJCIIKpJJJkkCpQpENKE"],["AoE Fatebound KiR+GSW",241028,"BQQAEYZuxxya69qT++xgdWvyoAAEEJRCSSSIJJRkEIJRJolAAAAAAgmkkkkkoEJlUCAAAAJCIIKpJJJkkCpQpENKE"]];
+        const rankedData = [["ST Fatebound KIR+CS | ER+No Vigor",581077,"BQQAEYZuxxya69qT++xgdWvyoAAElEJRiIJJhEiIRIJJRJRaJAAAAAAoUiEOQSiCUSLAAAASSACiWaSSCJpQKUaRhiE"],["ST Fatebound HO+CS | Tea",576039,"BQQAEYZuxxya69qT++xgdWvyoAAEIJRigkESIiEJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["AoE Fatebound KIR+CS | ER+No Vigor",570518,"BQQAEYZuxxya69qT++xgdWvyoAAElEEJJSSSIhQSSIJJRJRaJAAAAAAoUiEOQSiCUSLAAAASSACiWaSSCJpQKUaRhiE"],["AoE Fatebound HO+CS | Tea",558268,"BQQAEYZuxxya69qT++xgdWvyoAAEISkIIJhECJJJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["ST Fatebound HO+CS | Tea+Dispatcher",552381,"BQQAEYZuxxya69qT++xgdWvyoAAEIJkIcgkESIiEJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["ST Fatebound HO+CS",550272,"BQQAEYZuxxya69qT++xgdWvyoAAElkkEJCSSIhISkkIJRJRKJAAAAAAQLJJOQSiCUSJAAAAkEgAaQiQkGgSgiE"],["AoE Fatebound HO+CS",534327,"BQQAEYZuxxya69qT++xgdWvyoAAElkIRigkESIkkkkIJRJRKJAAAAAAQLJJOQSiCUSJAAAAkEgAaQiQkGgSgiE"],["AoE Fatebound KiR+GSW",510737,"BQQAEYZuxxya69qT++xgdWvyoAAEEJRCSSSIJJRkEIJRJolAAAAAAgmkkkkkoEJlUCAAAAJCIIKpJJJkkCpQpENKE"],["ST Fatebound KiR+GSW",477263,"BQQAEYZuxxya69qT++xgdWvyoAAEEJRiIJJhEJiEBJJRJolAAAAAAgmkkkkkoEJlUCAAAAJCIIKpJJJkkCpQpENKE"]];
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
         const default_background_color = "#343a40";
@@ -159,7 +159,7 @@
                 data: rankedData.map(t => t[1])
             }],
             title: {
-                text: 'castingpatchwerk Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/e85a68bd9a">e85a68bd</a>)',
+                text: 'castingpatchwerk3 Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/e85a68bd9a">e85a68bd</a>)',
                 useHTML: true,
                 style: {
                     color: font_color,
