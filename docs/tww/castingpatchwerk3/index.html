@@ -10,7 +10,7 @@
             body {
                 background-color: #343a40;
                 height: 100%;
-                min-height: 22.5em;
+                min-height: 30em;
                 margin: 0px;
             }
 
@@ -29,7 +29,7 @@
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
 
-        const rankedData = [["ST Fatebound KIR+CS | ER+No Vigor",581077,"BQQAEYZuxxya69qT++xgdWvyoAAElEJRiIJJhEiIRIJJRJRaJAAAAAAoUiEOQSiCUSLAAAASSACiWaSSCJpQKUaRhiE"],["ST Fatebound HO+CS | Tea",576039,"BQQAEYZuxxya69qT++xgdWvyoAAEIJRigkESIiEJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["AoE Fatebound KIR+CS | ER+No Vigor",570518,"BQQAEYZuxxya69qT++xgdWvyoAAElEEJJSSSIhQSSIJJRJRaJAAAAAAoUiEOQSiCUSLAAAASSACiWaSSCJpQKUaRhiE"],["AoE Fatebound HO+CS | Tea",558268,"BQQAEYZuxxya69qT++xgdWvyoAAEISkIIJhECJJJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["ST Fatebound HO+CS | Tea+Dispatcher",552381,"BQQAEYZuxxya69qT++xgdWvyoAAEIJkIcgkESIiEJJSSUSkSCAAAAAA0SSCJJKRSJlAAAAQSACoBJCRaAKBKSA"],["ST Fatebound HO+CS",550272,"BQQAEYZuxxya69qT++xgdWvyoAAElkkEJCSSIhISkkIJRJRKJAAAAAAQLJJOQSiCUSJAAAAkEgAaQiQkGgSgiE"],["AoE Fatebound HO+CS",534327,"BQQAEYZuxxya69qT++xgdWvyoAAElkIRigkESIkkkkIJRJRKJAAAAAAQLJJOQSiCUSJAAAAkEgAaQiQkGgSgiE"],["AoE Fatebound KiR+GSW",510737,"BQQAEYZuxxya69qT++xgdWvyoAAEEJRCSSSIJJRkEIJRJolAAAAAAgmkkkkkoEJlUCAAAAJCIIKpJJJkkCpQpENKE"],["ST Fatebound KiR+GSW",477263,"BQQAEYZuxxya69qT++xgdWvyoAAEEJRiIJJhEJiEBJJRJolAAAAAAgmkkkkkoEJlUCAAAAJCIIKpJJJkkCpQpENKE"]];
+        const rankedData = [["ST Fatebound KIR+CS | ER+No Vigor",886258,"CQQAam+v0FpP80IqJo3aSeC38CAwyMmZMjxMzMDzwYMjhZmZmWmxsNDAAAAAA22mZmxDMzMWglZZAAAAYmBYAbwMGNmNAbTYxMA"],["ST Fatebound HO+CS | Tea",878265,"CQQAam+v0FpP80IqJo3aSeC38CAAmZGzYwMzwMMGzYmZMzMtMjZZGAAAAAAstNzMDzMjlxMLzyAAAAwMDwA2gZMaMbA2mwiZA"],["AoE Fatebound KIR+CS | ER+No Vigor",869270,"CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGGmZmhZmZmWmxsNDAAAAAA22mZmxDMzMWglZZAAAAYmBYAbwMGNmNAbTYxMA"],["AoE Fatebound HO+CS | Tea",850329,"CQQAam+v0FpP80IqJo3aSeC38CAAGzYGDmZGmhhZmZmZMzMtMjZZGAAAAAAstNzMDzMjlxMLzyAAAAwMDwA2gZMaMbA2mwiZA"],["ST Fatebound HO+CS | Tea+Dispatcher",842336,"CQQAam+v0FpP80IqJo3aSeC38CAAmZYGDPwMzwMMGzYmZMzMtMjZZGAAAAAAstNzMDzMjlxMLzyAAAAwMDwA2gZMaMbA2mwiZA"],["ST Fatebound HO+CS",825580,"CQQAam+v0FpP80IqJo3aSeC38CAwyMzMjZMYmZYGGMjZmZmZmWmxsMDAAAAAA22mZmxDMzMWglZZAAAAYmBYAbwMGNmNAbTYxMA"],["AoE Fatebound HO+CS",815359,"CQQAam+v0FpP80IqJo3aSeC38CAwyMjZMjBzMDzwwMzMzMmZmWmxsMDAAAAAA22mZmxDMzMWglZZAAAAYmBYAbwMGNmNAbTYxMA"],["AoE Fatebound KiR+GSW",773330,"CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYAbwMGNmNAbTYhB"],["AoE CB Fatebound KiR+GSW",760710,"CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmZmZmxCzDsMLDAAAAzYADYBmxoxsBYbCLMA"],["ST Fatebound KiR+GSW",753839,"CQQAam+v0FpP80IqJo3aSeC38CAwyMmZMjxMzMDzYGjZMYmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYAbwMGNmNAbTYhB"],["ST CB Fatebound KiR+GSW",737015,"CQQAam+v0FpP80IqJo3aSeC38CAwyMmZMjxMzMDzYGjZMYmZmWGsNDAAAAAA22mZmZmZmxCzDsMLDAAAAzYADYBmxoxsBYbCLMA"],["ST Fatebound HO+CS | 0Fan+ER",711025,"CQQAam+v0FpP80IqJo3aSeC38CAwyMzMjZMMzMDzAjZMzMmZmWmxsMDAAAAAA22mZmhZmxCzDsMLDAAAAzMADYDmxoxsBYbCLMA"]];
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
         const default_background_color = "#343a40";
@@ -159,7 +159,7 @@
                 data: rankedData.map(t => t[1])
             }],
             title: {
-                text: 'castingpatchwerk3 Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/e85a68bd9a">e85a68bd</a>)',
+                text: 'castingpatchwerk3 Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/938a1e4">938a1e4</a>)',
                 useHTML: true,
                 style: {
                     color: font_color,
