@@ -1,32 +1,32 @@
-# Rune-Branded Hood  (597)
-head=,id=219329,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=40/49,crafting_quality=5
-# Amulet of Earthen Craftsmanship  (597)
-neck=,id=215136,gem_id=213743/213503/213479,bonus_id=10421/9633/8902/10394/10880/9627/10222,crafted_stats=32/40,crafting_quality=5
-# Rune-Branded Mantle  (597)
-shoulder=,id=219330,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=49/40,crafting_quality=5
-# Lightdrinker Cloak of Rage (515)
-back=,id=153945,bonus_id=11082/9932
-# Rune-Branded Tunic  (597)
-chest=,id=219328,enchant_id=7364,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=40/32,crafting_quality=5
-# Rune-Branded Armbands  (597)
-wrist=,id=219334,enchant_id=7391,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=36/49,crafting_quality=5
-# Rune-Branded Grasps  (597)
-hands=,id=219333,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=40/32,crafting_quality=5
-# Rune-Branded Waistband  (597)
-waist=,id=219331,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=49/36,crafting_quality=5
-# Rune-Branded Legwraps  (597)
-legs=,id=219332,enchant_id=6490,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=32/49,crafting_quality=5
-# Rune-Branded Kickers  (597)
-feet=,id=219327,enchant_id=7418,bonus_id=10421/9633/8902/9405/8795/10222,crafted_stats=40/36,crafting_quality=5
-# Ring of Earthen Craftsmanship  (597)
-finger1=,id=215135,enchant_id=7470,gem_id=213461/213461/213461,bonus_id=10421/9633/8902/10394/10880/9627/10222/8795,crafted_stats=49/32,crafting_quality=5
-# Ring of Earthen Craftsmanship  (597)
-finger2=,id=215135,enchant_id=7470,gem_id=213467/213491/213461,bonus_id=10421/9633/8902/10394/10880/9627/10222/8795,crafted_stats=32/40,crafting_quality=5
-# Lightdrinker Idol of Rage (515)
-trinket1=,id=153947,bonus_id=11082/9932
-# Lightdrinker Stone of Rage (515)
-trinket2=,id=153950,bonus_id=11082/9932
-# Everforged Longsword  (597)
-main_hand=,id=222440,enchant_id=7463,bonus_id=10421/9633/8902/9627,crafted_stats=40/32,crafting_quality=5
-# Everforged Dagger  (597)
-off_hand=,id=222439,enchant_id=7463,bonus_id=10421/9633/8902/9627,crafted_stats=40/32,crafting_quality=5
+# K'areshi Phantom's Emptiness (597)
+head=,id=212038,bonus_id=6652/10876/10376/10354/10273/1498/10255,ilevel=632
+# Sureki Zealot's Insignia (610)
+neck=,id=225577,gem_id=213743/213485,bonus_id=6652/10354/10269/1511/10255/10394/10879,ilevel=632
+# K'areshi Phantom's Shoulderpads (597)
+shoulder=,id=212036,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Wings of Shattered Sorrow (610)
+back=,id=225574,enchant_id=7409,bonus_id=6652/10376/10354/10269/1511/10255,ilevel=632
+# K'areshi Phantom's Nexus Wraps (597)
+chest=,id=212041,enchant_id=7364,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Forged Gladiator's Leather Wristwraps (626)
+wrist=,id=218588,enchant_id=7385,bonus_id=10256/11086/10375/6652/10876/11095/1514/10255,ilevel=632
+# K'areshi Phantom's Gloves (597)
+hands=,id=212039,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Forged Gladiator's Leather Strap (626)
+waist=,id=218587,bonus_id=10256/11086/10375/6652/10876/11095/1514/10255,ilevel=632
+# K'areshi Phantom's Leggings (597)
+legs=,id=212037,enchant_id=6490,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Forged Gladiator's Leather Treads (626)
+feet=,id=218577,enchant_id=7424,bonus_id=10256/11086/10375/6652/11095/1514/10255,ilevel=632
+# Forged Gladiator's Ring (626)
+finger1=,id=218707,enchant_id=7476,gem_id=213494/213455,bonus_id=10256/11086/6652/11095/1514/10255/10394/10879,ilevel=632
+# Seal of the Poisoned Pact (613)
+finger2=,id=225578,enchant_id=7476,gem_id=213470/213506,bonus_id=6652/10354/10268/1514/10255/10394/10879,ilevel=632
+# Void Reaper's Contract (606)
+trinket1=,id=212456,bonus_id=6652/10354/10270/1507/10255,ilevel=632
+# Conductor's Wax Whistle (597)
+trinket2=,id=219304,bonus_id=10273/10390/6652/10383/1632/10255,ilevel=632
+# Void Reaper's Warp Blade (610)
+main_hand=,id=219877,enchant_id=7463,bonus_id=6652/10354/10269/1511/10255,ilevel=632
+# Forged Gladiator's Dagger (626)
+off_hand=,id=218719,enchant_id=7463,bonus_id=10256/11086/6652/11095/1514/10255,ilevel=632
