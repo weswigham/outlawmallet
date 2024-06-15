@@ -1,13 +1,13 @@
-copy="ST Fatebound HO+CS"
+copy="ST Fatebound HO+CS | ER+No Vigor"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMzMjZMYmZYGGMjZmZmZmWmxsMDAAAAAA22mZmxDMzMWglZZAAAAYmBYAbwMGNmNAbTYxMA
 
-copy="ST Trickster HO+CS"
+copy="ST Trickster HO+CS | ER+No Vigor"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMzMjZMYmZYGGMjZmZmZmWmxsMDAAAAAA22mZmxDMzwCsMLDAAAAzMDYwYb2MzMjmZ2YWYZbahNzA
 
-copy="AoE Fatebound HO+CS"
+copy="AoE Fatebound HO+CS | ER+No Vigor"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMjZMjBzMDzwwMzMzMmZmWmxsMDAAAAAA22mZmxDMzMWglZZAAAAYmBYAbwMGNmNAbTYxMA
 
-copy="AoE Trickster HO+CS"
+copy="AoE Trickster HO+CS | ER+No Vigor"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMjZMjBzMDzwwMzMzMmZmWmxsMDAAAAAA22mZmxDMzwCsMLDAAAAzMDYwYb2MzMjmZ2YWYZbahNzA
 
 copy="ST CB Fatebound KiR+GSW"
@@ -28,13 +28,13 @@ talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmxMzMWYm
 copy="AoE Trickster KiR+GSW"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYwYb2MzMjmZ2YWYZbahNG
 
-copy="ST Fatebound HO+CS | Tea"
+copy="ST Fatebound HO+CS | Tea+No KS"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAAmZGzYwMzwMMGzYmZMzMtMjZZGAAAAAAstNzMDzMjlxMLzyAAAAwMDwA2gZMaMbA2mwiZA
 
 copy="ST Trickster HO+CS | Tea"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAAmZGzYwMzwMMYGzMjZmplZMLzAAAAAAgttZmZYmZsMmZZWGAAAAmZGwgx2sZmZGNzsxswy20CbmB
 
-copy="AoE Fatebound HO+CS | Tea"
+copy="AoE Fatebound HO+CS | Tea+No KS"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAAGzYGDmZGmhhZmZmZMzMtMjZZGAAAAAAstNzMDzMjlxMLzyAAAAwMDwA2gZMaMbA2mwiZA
 
 copy="AoE Trickster HO+CS | Tea"
@@ -69,3 +69,9 @@ talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMYMDmZmZmZGGzMzMMzMz0yMmtZAAAAAAw22MzMegZGW
 
 copy="AoE Trickster KiR+CS | ER+Mastery"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMYMDmZmZmZGGzMjhZmZmWmxsNDAAAAAA22mZmxDMzwCsMLDAAAAzMDYwYb2MzMjmZ2YWYZbahNzA
+
+copy="ST Fatebound HO+CS | Tea+KS"
+talents=CQQAam+v0FpP80IqJo3aSeC38CAAmZGzYwMzwMMYGzMjZmplZMLzAAAAAAgttZmZYmZsMmZZWGAAAAmZGwA2gZMaMbA2mwiZA
+
+copy="AoE Fatebound HO+CS | Tea+KS"
+talents=CQQAam+v0FpP80IqJo3aSeC38CAAGzYGDmZGmhhZmZmZMzMtMjZZGAAAAAAstNzMDzMsMmZZWGAAAAmZGwA2gZMaMbA2mwiZA
