@@ -16,17 +16,29 @@ talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMmZMjxMzMDzYGjZMYmZmWGsNDAAAAAA22mZmZmZmxCz
 copy="AoE CB Fatebound KiR+GSW"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmZmZmxCzDsMLDAAAAzYADYBmxoxsBYbCLMA
 
-copy="ST Fatebound KiR+GSW"
+copy="ST Fatebound KiR+GSW | Stealthless"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMmZMjxMzMDzYGjZMYmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYAbwMGNmNAbTYhB
 
-copy="ST Trickster KiR+GSW"
+copy="ST Trickster KiR+GSW | Stealthless"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMmZMjxMzMDzYGjZMYmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYwYb2MzMjmZ2YWYZbahNG
 
-copy="AoE Fatebound KiR+GSW"
+copy="AoE Fatebound KiR+GSW | Stealthless"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYAbwMGNmNAbTYhB
 
-copy="AoE Trickster KiR+GSW"
+copy="AoE Trickster KiR+GSW | Stealthless"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAwyMMjZMmZmZYGzYmZmBmZmWGsNDAAAAAA22mZmxMzMWYmlZZAAAAYGDYwYb2MzMjmZ2YWYZbahNG
+
+copy="ST Fatebound KiR+GSW | UHUH"
+talents=CQQAam+v0FpP80IqJo3aSeC38CAAYGzYMzMzwMmxYGDzMzMtMjZbGAAAAAAstNzMjZmZsw8ALzyAAAAwMGwA2gZMaMbA2mwiZA
+
+copy="ST Trickster KiR+GSW | UHUH"
+talents=CQQAam+v0FpP80IqJo3aSeC38CAAYGzYMzMzwMmxYGDzMzMtMjZbGAAAAAAstNzMjZmZsw8ALzyAAAAwMGwgx2sZmZGNzsxswy20CbmB
+
+copy="AoE Fatebound KiR+GSW | UHUH"
+talents=CQQAam+v0FpP80IqJo3aSeC38CAAYGzYMzMzwMmhZmZYmZmplZMbzAAAAAAgttZmZMzMsw8ALzyAAAAwMGwgx2sZmZGNzsxswy20CLmB
+
+copy="AoE Trickster KiR+GSW | UHUH"
+talents=CQQAam+v0FpP80IqJo3aSeC38CAAYGzYMzMzwMmhZmZYmZmplZMbzAAAAAAgttZmZMzMsw8ALzyAAAAwMGwgx2sZmZGNzsxswy20CbmB
 
 copy="ST Fatebound HO+CS | Tea+No KS"
 talents=CQQAam+v0FpP80IqJo3aSeC38CAAmZGzYwMzwMMGzYmZMzMtMjZZGAAAAAAstNzMDzMjlxMLzyAAAAwMDwA2gZMaMbA2mwiZA
