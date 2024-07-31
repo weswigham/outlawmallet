@@ -1,16 +1,32 @@
-head=lurking_specters_visage,id=217208,bonus_id=1808/10359/1488,gem_id=192982,enchant=incandescent_essence
-neck=ouroboreal_necklet,id=210214,bonus_id=8782/10359/1488,gem_id=192932/192932/192932
-shoulders=lurking_specters_shoulderblades,id=217210,bonus_id=10359/1488
-back=voice_of_the_silent_star,id=204465,bonus_id=10359/1495
-chest=lurking_specters_brigandine,id=217206,bonus_id=10359/1488,enchant=waking_stats_3
-wrists=lifebound_bindings,id=193419,bonus_id=8780/8797/8960/10249/10359/9405,gem_id=192932,crafted_stats=32/40
-hands=lurking_specters_handgrips,id=217207,bonus_id=10359/1488
-waist=troggskin_waistband,id=193668,bonus_id=1808,ilevel=528,gem_id=192932
-legs=annoras_punctured_leggings,id=193811,ilevel=528,enchant=fierce_armor_kit_3
-feet=toxic_thorn_footwraps,id=193452,bonus_id=8960/8840/8836/8902/10249/10359/9405,crafted_stats=32/40
-finger1=seal_of_diurnas_chosen,id=195480,bonus_id=1808/10359/1488,gem_id=192932,enchant=devotion_of_versatility_3
-finger2=tormentors_siphoning_signet,id=204466,bonus_id=1808/10359/1488,gem_id=192932,enchant=devotion_of_versatility_3
-trinket1=cataclysmic_signet_brand,id=207166,bonus_id=10359/1488
-trinket2=manic_grieftorch,id=194308,bonus_id=10359/1488
-main_hand=forgestorm,id=193785,bonus_id=10359/1488,enchant=wafting_devotion_3
-off_hand=thorncaller_claw,id=207784,bonus_id=10359/1488,enchant=wafting_devotion_3
+# K'areshi Phantom's Emptiness (597)
+head=,id=212038,bonus_id=6652/10876/10376/10354/10273/1498/10255,ilevel=632
+# Sureki Zealot's Insignia (610)
+neck=,id=225577,gem_id=213743/213485,bonus_id=6652/10354/10269/1511/10255/10394/10879,ilevel=632
+# K'areshi Phantom's Shoulderpads (597)
+shoulder=,id=212036,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Wings of Shattered Sorrow (610)
+back=,id=225574,enchant_id=7409,bonus_id=6652/10376/10354/10269/1511/10255,ilevel=632
+# K'areshi Phantom's Nexus Wraps (597)
+chest=,id=212041,enchant_id=7364,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Forged Gladiator's Leather Wristwraps (626)
+wrist=,id=218588,enchant_id=7385,bonus_id=10256/11086/10375/6652/10876/11095/1514/10255,ilevel=632
+# K'areshi Phantom's Gloves (597)
+hands=,id=212039,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Forged Gladiator's Leather Strap (626)
+waist=,id=218587,bonus_id=10256/11086/10375/6652/10876/11095/1514/10255,ilevel=632
+# K'areshi Phantom's Leggings (597)
+legs=,id=212037,enchant_id=6490,bonus_id=6652/10376/10354/10273/1498/10255,ilevel=632
+# Forged Gladiator's Leather Treads (626)
+feet=,id=218577,enchant_id=7424,bonus_id=10256/11086/10375/6652/11095/1514/10255,ilevel=632
+# Forged Gladiator's Ring (626)
+finger1=,id=218707,enchant_id=7476,gem_id=213494/213455,bonus_id=10256/11086/6652/11095/1514/10255/10394/10879,ilevel=632
+# Seal of the Poisoned Pact (613)
+finger2=,id=225578,enchant_id=7476,gem_id=213470/213506,bonus_id=6652/10354/10268/1514/10255/10394/10879,ilevel=632
+# Void Reaper's Contract (606)
+trinket1=,id=212456,bonus_id=6652/10354/10270/1507/10255,ilevel=632
+# Conductor's Wax Whistle (597)
+trinket2=,id=219304,bonus_id=10273/10390/6652/10383/1632/10255,ilevel=632
+# Void Reaper's Warp Blade (610)
+main_hand=,id=219877,enchant_id=7463,bonus_id=6652/10354/10269/1511/10255,ilevel=632
+# Forged Gladiator's Dagger (626)
+off_hand=,id=218719,enchant_id=7463,bonus_id=10256/11086/6652/11095/1514/10255,ilevel=632

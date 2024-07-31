@@ -547,10 +547,10 @@ and presentation html files in the docs folder. Available options:
         outputPath = "./docs";
     }
     if (!level) {
-        level = 70;
+        level = 80;
     }
 
-    const talentFileContents = fs.readFileSync(level === 80 ? "./outlaw-talent-builds-tww.simc" : "./outlaw-talent-builds.simc", { encoding: "utf-8" });
+    const talentFileContents = fs.readFileSync("./outlaw-talent-builds.simc", { encoding: "utf-8" });
     const presentTalents = {};
     const talents = talentFileContents.split("\n\n").map(s => {
         const [namePart, talentPart] = s.split("\n");
@@ -573,7 +573,7 @@ and presentation html files in the docs folder. Available options:
         return /** @type {const} */([name, rawTalentStr]);
     });
     const talentSet = new Set(Object.keys(presentTalents));
-    const baseProfile = fs.readFileSync(level === 80 ? "./profile_gear_tww.simc" : "./profile_gear.simc", { encoding: "utf-8" });
+    const baseProfile = fs.readFileSync("./profile_gear.simc", { encoding: "utf-8" });
     const simcHash = getSimcHash();
     const toolsHash = getBloodytoolsHash();
     
