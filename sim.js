@@ -150,6 +150,9 @@ talents=${talent}`});
             iframe {
                 border: none;
             }
+            #unique-id {
+                pointer-events: auto !important;
+            }
         </style>
     </head>
     <body>
