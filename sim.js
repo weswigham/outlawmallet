@@ -80,7 +80,7 @@ function getSimcHash() {
  */
 function getMaxDps(style, talentString, outputPath) {
     const data = JSON.parse(fs.readFileSync(`${outputPath}/${style}/talents/${talentString}/secondary_distributions.json`, { encoding: "utf-8" }));
-    return data.data.baseline[data.sorted_data_keys.baseline[0]];
+    return data.data["custom profile"][data.sorted_data_keys["custom profile"][0]];
 }
 
 /**
@@ -600,6 +600,7 @@ tools hash: ${toolsHash}`);
         console.log(`Generating results for shard id ${opts.shard} (${opts.shardCount} total shards)...`);
     }
     for (const style of fightStyles) {
+        console.log(`Updating ${style}...`);
         collectDataForFightStyle(style, opts);
         updateIndex(style, opts);
     }
