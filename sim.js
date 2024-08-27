@@ -132,6 +132,13 @@ talents=${talent}`});
             fs.mkdirSync(`${outputPath}/${style}/talents/${talent}`, { recursive: true });
             fs.writeFileSync(dataPath, JSON.stringify(result, null, 4));
         }
+        // rename "custom profile" back to "baseline" - chart won't render without it being named "baseline"
+        for (const field of ["data", "data_profile_overrides", "sorted_data_keys"]) {
+            if (result[field].baseline) continue;
+            if (!result[field]["custom profile"]) continue;
+            result[field].baseline = result[field]["custom profile"];
+            delete result[field]["custom profile"];
+        }
         // always regenerate the html, so any updates made to the chart style are applied immediately on run
         fs.writeFileSync(`${outputPath}/${style}/talents/${talent}/index.html`,
     `
