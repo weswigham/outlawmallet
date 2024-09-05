@@ -145,8 +145,8 @@ talents=${talent}`});
 <html>
     <head>
         <meta name="description" content="Outlaw Rogue - ${name} secondary distribution sim results">
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/11.4.7/highcharts.js"></script>
+        <script src="https://code.highcharts.com/11.4.7/highcharts-3d.js"></script>
         <script src="https://bloodmallet.com/js/bloodmallet_chart_import.min.js"></script>
         <title>Outlawmallet - Secondary Distribution - ${style} - ${talent}</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -207,8 +207,8 @@ function updateIndex(style, { talents, simcHash, shard, outputPath }) {
     fs.writeFileSync(`${outputPath}/${style}/index.html`, `
 <html>
     <head>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/11.4.7/highcharts.js"></script>
+        <script src="https://code.highcharts.com/11.4.7/modules/exporting.js"></script>
         <title>Outlawmallet - ${style} - Talents</title>
         <meta name="description" content="Outlaw Rogue talent dps charts">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
