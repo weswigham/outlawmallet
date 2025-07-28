@@ -15,6 +15,7 @@ import os from "os";
  *  noSim: boolean,
  *  shard?: number,
  *  shardCount?: number,
+ *  ptr?: boolean,
  *  level: number
  * }} Context
  */
@@ -37,20 +38,27 @@ function execBloodmalletWorker(args, targetFile) {
  * @returns {object}
  */
 function execBloodmallet({profile, single_sim, ptr}) {
-    if (profile) {
+    /**
+     * @type {string | undefined}
+     */
+    let ptrApl;
+    if (profile || ptr) {
         // Unfortunately, bloodmallet reads custom profiles from a file in the current working directory - this isn't bad normally, but is somewhat painful inside a not-yet-run container
         // It basically means we have to rebuild the container :(
+        ptrApl = !ptr ? "" : fs.readFileSync("./ptr_apl.simc", { encoding: "utf8" });
         const dockerfile =
         `FROM bloodytools
         RUN rm ./custom_profile.txt
+        RUN rm ./custom_apl.txt
         RUN echo $'${profile.split("\n").join("\\n\\\n")}' >> ./custom_profile.txt
+        RUN echo $'${ptrApl.split("\n").join("\\n\\\n")}' >> ./custom_apl.txt
         ENTRYPOINT ["python3", "-m", "bloodytools"]
         CMD ["--help"]\0`
         
         child_process.execSync(`docker build -t bloodytools_custom -`, { input: dockerfile, stdio: ["pipe", "inherit", "inherit"] });
         
     }
-    return execBloodmalletWorker(`${ptr ? "-ptr " : ""}${profile ? "--custom_profile " : ""}--single_sim="${single_sim}"`, `${single_sim.split(",")[0]}/${single_sim.split(",").slice(1).join("_")}.json`);
+    return execBloodmalletWorker(`${ptr ? "-ptr " : ""}${profile ? "--custom_profile " : ""}${!!ptrApl ? "--custom_apl " : ""}--single_sim="${single_sim}"`, `${single_sim.split(",")[0]}/${single_sim.split(",").slice(1).join("_")}.json`);
 }
 
 function getBloodytoolsHash() {
@@ -87,7 +95,7 @@ function getMaxDps(style, talentString, outputPath) {
  * @param {string} style
  * @param {Context} param1
  */
-function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount, outputPath, level }) {
+function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount, outputPath, level, ptr }) {
     if (fs.existsSync(`${outputPath}/${style}/talents`)) {
         fs.readdirSync(`${outputPath}/${style}/talents`).forEach(d => {
             if (!talentSet.has(d)) {
@@ -119,7 +127,7 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
                 continue;
             }
             console.log(`Simulating secondary distributions for ${name}...`);
-            result = execBloodmallet({single_sim: `secondary_distributions,rogue,outlaw,${style}`, profile:
+            result = execBloodmallet({single_sim: `secondary_distributions,rogue,outlaw,${style}`, ptr, profile:
     `rogue="${name}"
 spec=outlaw
 race=tauren
@@ -526,7 +534,8 @@ When run with no arguments, this script updates all secondary distribution sim r
 and presentation html files in the docs folder. Available options:
     --help                  Print this message
     --output=[path]         Output directory for these sims = ./docs by default
-    --level=[number]        Level of the character in the sims = 70 by default
+    --level=[number]        Level of the character in the sims = 80 by default
+    --ptr                   Enable PTR sims, PTR gear/apl
     --style=[fightstyle]    Just update [fightstyle] results. Eg, castingpatchwerk, castingpatchwerk8, or dungeonslice.
     --no-sim                Use the results cached on disk only, and just update the html presentation files.
     --shard-count=[N]       Used with --shard, specifies how many shards are in use.
@@ -536,6 +545,7 @@ and presentation html files in the docs folder. Available options:
         return;
     }
     const noSim = !!args.find(a => a.startsWith("--no-sim"));
+    const ptr = !!args.find(a => a.startsWith("--ptr"));
     let outputPath = args.find(a => a.startsWith("--output="))?.slice("--output=".length);
     let level = +args.find(a => a.startsWith("--level="))?.slice("--level=".length);
     const style = args.find(a => a.startsWith("--style="))?.slice("--style=".length);
@@ -583,7 +593,7 @@ and presentation html files in the docs folder. Available options:
         return /** @type {const} */([name, rawTalentStr]);
     });
     const talentSet = new Set(Object.keys(presentTalents));
-    const baseProfile = fs.readFileSync("./profile_gear.simc", { encoding: "utf-8" });
+    const baseProfile = fs.readFileSync(ptr ? "./ptr_profile_gear.simc" : "./profile_gear.simc", { encoding: "utf-8" });
     const simcHash = getSimcHash();
     const toolsHash = getBloodytoolsHash();
     
@@ -601,7 +611,7 @@ tools hash: ${toolsHash}`);
     /**
      * @type {Context}
      */
-    const opts = { outputPath, talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard: shard && Number(shard), shardCount: shardCount && Number(shardCount), level };
+    const opts = { outputPath, talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard: shard && Number(shard), shardCount: shardCount && Number(shardCount), level, ptr };
 
     if (opts.shard) {
         console.log(`Generating results for shard id ${opts.shard} (${opts.shardCount} total shards)...`);

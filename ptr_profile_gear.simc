@@ -1,0 +1,32 @@
+# Hood of the Sudden Eclipse 723
+head=,id=237664,bonus_id=1808,gem_id=213743,ilevel=723
+# Chrysalis of Sundered Souls 723
+neck=,id=237568,bonus_id=8781,gem_id=213467/213497,ilevel=723
+# Smokemantle of the Sudden Eclipse 723
+shoulder=,id=237662,ilevel=723
+# Reshii Wraps 730
+back=,id=235499,gem_id=238045,ilevel=730
+# Tactical Vest of the Sudden Eclipse 723
+chest=,id=237667,enchant_id=7364,ilevel=723
+# Armbands of the Sudden Eclipse 723
+wrist=,id=237660,bonus_id=1808,gem_id=213485,ilevel=723
+# Gloves of Haunting Fixation 723
+hands=,id=178832,ilevel=723
+# Rune-Branded Waistband 720
+waist=,id=219331,bonus_id=10421/9633/8902/8795/1808,gem_id=213461,ilevel=720
+# Pants of the Sudden Eclipse 723
+legs=,id=237663,enchant_id=7601,ilevel=723
+# Interloper's Reinforced Sandals 723
+feet=,id=243306,ilevel=723
+# Ring of Earthen Craftsmanship 720
+finger1=,id=215135,bonus_id=10421/9633/8902/8792/8781/10520/8960,enchant_id=7352,gem_id=213461/213461,ilevel=720
+# Ring of Earthen Craftsmanship 720
+finger2=,id=215135,bonus_id=10421/9633/8902/8795/8781/10520/8960,enchant_id=7352,gem_id=213461/213461,ilevel=720
+# Sigil of the Cosmic Hunt 723
+trinket1=,id=242397,ilevel=723
+# Incorporeal Warpclaw 723
+trinket2=,id=242495,ilevel=723
+# Ergospheric Cudgel 723
+main_hand=,id=237731,enchant_id=7460,ilevel=723
+# Geezle's Coercive Volt-ohmmeter 723
+off_hand=,id=234493,enchant_id=7460,ilevel=723
