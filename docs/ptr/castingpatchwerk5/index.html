@@ -1,0 +1,274 @@
+
+<html>
+    <head>
+        <script src="https://code.highcharts.com/11.4.7/highcharts.js"></script>
+        <script src="https://code.highcharts.com/11.4.7/modules/exporting.js"></script>
+        <title>Outlawmallet - castingpatchwerk5 - Talents</title>
+        <meta name="description" content="Outlaw Rogue talent dps charts">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <style>
+            body {
+                background-color: #343a40;
+                height: 100%;
+                min-height: 145em;
+                margin: 0px;
+            }
+
+            .build-link {
+                color: #f8f9fa;
+                text-decoration: none;
+            }
+
+            .build-link:hover {
+                color: magenta;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="unique-id" style="height: 100%">Loading...</div>
+    <script>
+
+        const rankedData = [["ST Trickster KiR+CS | SC",13885888,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYGGMjhZmZGLzY2mBAAAAAAbbzMDmZGLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswmZA"],["AoE Trickster KiR+CS | SC",13878673,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mhZMjxMzMDzwwMzMMzMzYZGz2MAAAAAAYbbmZwMDLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswmZA"],["AoE Trickster KiR+CS | Lethality",13387408,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmhhZmZYmZmxyMmtZAAAAAAw22MzwMzwCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["ST Trickster KiR+CS | Lethality",13313719,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMMYGDzMzMWmxsNDAAAAAA22mZGmZmxCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["AoE Trickster KiR+CS | Tea",13055733,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmhhZmZYmZmxyMmtZAAAAAAw22MzgZGWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["ST Trickster KiR+CS | Tea",12983713,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMMYGDzMzMWmxsNDAAAAAA22mZGMzMWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["ST Trickster HO+CS | Lethality",12951059,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhBzYmZMzMWmxsMDAAAAAA22mZGmZmxCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["ST Trickster HO+CS | SC",12911583,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZmZMjBzMDzwgZMzMmZGLzYWmBAAAAAAbbzMDmZGLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswmZA"],["ST Trickster HO+CS | 2Vig",12908420,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhBzYmZMzMWmxsMDAAAAAA22mZGegZmxCzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["ST Trickster HO+CS | Tea",12817694,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhBzYmZMzMWmxsMDAAAAAA22mZGMzMWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["AoE Trickster HO+CS | SC",12776171,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZMjZMYmZYGGmZmZmxMzYZGzyMAAAAAAYbbmZwMDLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswmZA"],["AoE Trickster HO+CS | Lethality",12742056,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzwMzwCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["AoE Fatebound KiR+CS | SC",12726445,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mhZMjxMzMDzwwMzMMzMzYZGz2MAAAAAAYbbmZwMzYBWmlBAAAgZGgBz2sZmZGmZ2YWYZbswiZA"],["AoE Fatebound KiR+CS+KS | SC",12692213,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mhZMjxMzMDzwwMzMMzMzYZGz2MAAAAAAYbbmZwMDLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswiZA"],["AoE Trickster HO+CS | 2Vig",12687814,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzwDMzwCzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["AoE Trickster HO+CS | Tea",12545701,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzgZGWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsZG"],["ST Fatebound KiR+CS+KS | SC",12456744,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYGGMjhZmZGLzY2mBAAAAAAbbzMDmZGLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswiZA"],["ST Fatebound KiR+CS | SC",12344342,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYGGjZMMzMzYZGz2MAAAAAAYbbmZwMzYBWmlBAAAgZGgBz2sZmZGmZ2YWYZbswiZA"],["AoE Fatebound KiR+CS | Lethality",12286479,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmhhZmZYmZmxyMmtZAAAAAAw22MzwMzMWYeglZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound KiR+CS+KS | Lethality",12235813,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmhhZmZYmZmxyMmtZAAAAAAw22MzwMzwCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound KiR+CS+KS | Lethality",12037551,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMMYGDzMzMWmxsNDAAAAAA22mZGmZmxCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound KiR+CS | Tea",11971045,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmhhZmZYmZmxyMmtZAAAAAAw22MzgZmxyYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound KiR+CS+KS | Tea",11956871,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmhhZmZYmZmxyMmtZAAAAAAw22MzgZGWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound KiR+CS | Lethality",11914495,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMMGzYYmZmxyMmtZAAAAAAw22MzwMzMWYeglZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["ST Trickster KiR+GSW | SC",11765889,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYGzgZMMzMzYZGz2MAAAAAAYbbmZwMzYBWmlBAAAgZMgBz2sZmZGmZ2YWYZbswmZA"],["ST Fatebound KiR+CS+KS | Tea",11764089,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMMYGDzMzMWmxsNDAAAAAA22mZGMzMWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["AoE Trickster KiR+GSW | Stealthless",11697267,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYGzwMzMwMzYZw2MAAAAAAYbbmZwMzYZMzysMAAAAMjBMY2mNzMzwMzGzCLbjF2YA"],["AoE Trickster KiR+GSW | SC",11687105,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mhZMjxMzMDzYGmZmhZmZGLzY2mBAAAAAAbbzMDmZYBWmlBAAAgZMgBz2sZmZGmZ2YWYZbswmZA"],["ST Fatebound HO+CS+KS | 2Vig",11668776,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhBzYmZMzMWmxsMDAAAAAA22mZGegZmxCzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS+KS | Tea",11668332,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhBzYmZMzMWmxsMDAAAAAA22mZGMzMWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS+KS | Lethality",11636878,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhBzYmZMzMWmxsMDAAAAAA22mZGmZmxCzDsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound KiR+CS | Tea",11616712,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMMGzYYmZmxyMmtZAAAAAAw22MzgZmxyYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS+KS | SC",11515522,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZmZMjBzMDzwgZMzMmZGLzYWmBAAAAAAbbzMDmZGLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswiZA"],["ST Fatebound HO+CS | Tea",11502880,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhxYGzMjZmxyMmlZAAAAAAw22MzgZmxyYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS | 2Vig",11496321,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhxYGzMjZmxyMmlZAAAAAAw22MzwDMzMWYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["ST Trickster KiR+GSW | 2Vig",11486165,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMmBzYYmZmxyMmtZAAAAAAw22MzwDMzMWYmlZZAAAAYGDYwsNbmZmhZmNmFW2GLsZG"],["AoE Fatebound HO+CS+KS | 2Vig",11464639,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzwDMzwCzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound HO+CS+KS | Lethality",11460327,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmplZMLzAAAAAAgttZmhZmhFmHYZWGAAAAmZGwgZb2MzMjmZ2YWYZbahFzA"],["AoE Fatebound HO+CS+KS | SC",11448758,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZMjZMYmZYGGmZmZmxMzYZGzyMAAAAAAYbbmZwMDLwysMAAAAMzMgBz2sZmZGmZ2YWYZbswiZA"],["ST Trickster HO+CS+GSW | SC+No CTO",11440090,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZmZMjBjZYGzgZMzMmZmWmxsMDAAAAAA22mZGMzMWglZZAAAAYmZADmtZzMzMamZjZhltpF2MD"],["ST Fatebound HO+CS | Lethality",11426390,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDmZGmhxYGzMjZmxyMmlZAAAAAAw22MzwMzMWYeglZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound HO+CS | 2Vig",11383058,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzwDMzMWYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["AoE Trickster KiR+GSW | 2Vig",11382287,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmxMMzMDzMzMWmxsNDAAAAAA22mZGegZGWYmlZZAAAAYGDYwsNbmZmhZmNmFW2GLsZG"],["AoE Fatebound HO+CS | Lethality",11359023,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzwMzMWYeglZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound HO+CS+KS | Tea",11346040,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzgZGWGzsMLDAAAAzMDYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS | SC",11335118,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZmZMjBzMDzwYMjZmxMzYZGzyMAAAAAAYbbmZwMzYBWmlBAAAgZGgBz2sZmZGmZ2YWYZbswiZA"],["AoE Fatebound HO+CS | SC",11325791,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZMjZMYmZYGGmZmZmxMzYZGzyMAAAAAAYbbmZwMzYBWmlBAAAgZGgBz2sZmZGmZ2YWYZbswiZA"],["AoE Fatebound HO+CS | Tea",11296597,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwYGzYwMzwMMMzMzMjZmxyMmlZAAAAAAw22MzgZmxyYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["AoE Fatebound KiR+GSW | SC",11066855,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mhZMjxMzMDzYGmZmhZmZGLzY2mBAAAAAAbbzMDmZGLwysMAAAAMDgBz2sZmZGmZ2YWYZbswiZA"],["AoE Fatebound KiR+GSW | Stealthless",10973405,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYmZGmZmBmZGLD2mBAAAAAAbbzMDmZGLjZWmlBAAAgZAMY2mNzMzwMzGzCLbjFWYA"],["ST Fatebound KiR+GSW | SC",10808599,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYGzYMjhZmZGLzY2mBAAAAAAbbzMDmZGLwysMAAAAMDgBz2sZmZGmZ2YWYZbswiZA"],["ST Trickster KiR+GSW | Stealthless",10745550,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMmZmZYmZGjZMwMzYZw2MAAAAAAYbbmZwMzYZMzysMAAAAMjBMY2mNzMzwMzGzCLbjF2YA"],["AoE Fatebound KiR+GSW | 2Vig",10721920,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMAzYGjZmZGmxMMzMDzMzMWmxsNDAAAAAA22mZGegZmxCzsMLDAAAAzAYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound KiR+GSW | 2Vig",10501046,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMgZGzYMzMzwMmxYGDzMzMWmxsNDAAAAAA22mZGegZmxCzsMLDAAAAzAYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS+GSW | 2Vig",10327999,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMDzYwMzwMmxYGzMjZmxyMmlZAAAAAAw22MzwDMzMWYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS+GSW | No CTO",10134923,"CQQAA0tw2gAD7pPTLoW5IGZDeAAMwMzYGDGzwMmxYGzMjZmxyMmlZAAAAAAw22MzwDMzMWYmlZZAAAAYmBYwsNbmZmhZmNmFW2GLsYG"],["ST Fatebound HO+CS+GSW | SC+No CTO",9993102,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mZmZMjZYMDzYGMjZmxMzYZGzyMAAAAAAYbbmZwMzYBWmlBAAAgZGgBz2sZmZGmZ2YWYZbswiZA"],["ST Fatebound KiR+GSW | Stealthless",9971965,"CQQAA0tw2gAD7pPTLoW5IGZDeAAM2mxMjZMzMzMDzMzYMjBmZGLD2mBAAAAAAbbzMDmZGLjZWmlBAAAgZAMY2mNzMzwMzGzCLbjFWYA"]];
+        const absolute_damage_per_second = "Damage per second";
+        const bar_colors = ["#e4d354"];
+        const default_background_color = "#343a40";
+        const default_font_color = "#f8f9fa";
+        const default_axis_color = "#828282";
+        const font_size = "1.1rem";
+        const background_color = "#343a40";
+        const axis_color = "#828282";
+        const font_color = "#f8f9fa";
+        const makeRelative = function() {
+            this.yAxis[0].setTitle({text: "Δ% From Best DPS"});
+            this.yAxis[1].setTitle({text: "Δ% From Best DPS"});
+            this.series[0].setName("Δ% DPS");
+            this.series[0].setData(
+                rankedData.map(t => Math.floor((1 - t[1]/rankedData[0][1]) * -10000)/100)
+            );
+            this.yAxis[0].setExtremes((1 - rankedData[rankedData.length - 1][1]/rankedData[0][1]) * -100, 0);
+            this.exporting.update({
+                buttons: {
+                    contextButton: { enabled: false },
+                    toggleButton: { text: "Absolute", onclick: makeAbsolute }
+                }
+            });
+        }
+        const makeAbsolute = function() {
+            this.yAxis[0].setTitle({text: absolute_damage_per_second});
+            this.yAxis[1].setTitle({text: absolute_damage_per_second});
+            this.series[0].setName("DPS");
+            this.series[0].setData(
+                rankedData.map(t => t[1])
+            );
+            this.yAxis[0].setExtremes(0, rankedData[0][1]);
+            this.exporting.update({
+                buttons: {
+                    contextButton: { enabled: false },
+                    toggleButton: { text: "Relative", onclick: makeRelative }
+                }
+            });
+        }
+        const styled_chart = {
+            navigation: {
+                buttonOptions: {
+                    theme: {
+                        fill: default_axis_color
+                    }
+                }
+            },
+            exporting: {
+                buttons: {
+                    contextButton: {
+                        enabled: false
+                    },
+                    toggleButton: {
+                        text: "Relative",
+                        onclick: makeRelative
+                    },
+                }
+            },
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        align: "right",
+                        enabled: true
+                    }
+                }
+            },
+            credits: {
+                enabled: true,
+                href: "https://github.com/weswigham/outlawmallet",
+                text: "Check out the source on GitHub"
+            },
+            accessibility: {
+                enabled: false
+            },
+            chart: {
+                type: "bar",
+                backgroundColor: background_color,
+                style: {
+                    fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\""
+                },
+                events: {
+                    load: function() {
+                        this.credits.on("click", function(e) {
+                            if (window.parent !== window) {
+                                window.open("https://github.com/weswigham/outlawmallet", "_blank");
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }
+                            else {
+                                window.location.href = "https://github.com/weswigham/outlawmallet";
+                            }
+                        });
+                    },
+                },
+            },
+            colors: bar_colors,
+            legend: {
+                align: "right",
+                backgroundColor: background_color,
+                borderColor: axis_color,
+                borderWidth: 1,
+                floating: false,
+                itemMarginBottom: 3,
+                itemMarginTop: 0,
+                layout: 'vertical',
+                reversed: true,
+                shadow: false,
+                verticalAlign: "middle",
+                x: 0,
+                y: 0,
+                itemStyle: {
+                    color: font_color,
+                },
+                itemHoverStyle: {
+                    color: font_color,
+                },
+                title: {
+                    text: " ",
+                    style: {
+                        color: default_font_color
+                    }
+                },
+                symbolRadius: 0
+            },
+            series: [{
+                name: "DPS",
+                data: rankedData.map(t => t[1])
+            }],
+            title: {
+                text: 'castingpatchwerk5 Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/b7aa4b3880">b7aa4b38</a>)',
+                useHTML: true,
+                style: {
+                    color: font_color,
+                    fontSize: font_size
+                }
+            },
+            tooltip: {
+                headerFormat: "<b>{point.x}</b>",
+                shared: true,
+                backgroundColor: default_background_color,
+                borderColor: default_axis_color,
+                style: {
+                    color: default_font_color,
+                    fontSize: font_size,
+                },
+                useHTML: true,
+            },
+            xAxis: {
+                categories: rankedData.map(t => `<a class="build-link" target="_blank" href="./talents/${t[2]}/index.html">${t[0]}</a>`),
+                labels: {
+                    useHTML: true,
+                    style: {
+                        color: default_font_color,
+                        fontSize: font_size,
+                    }
+                },
+                gridLineWidth: 0,
+                gridLineColor: default_axis_color,
+                lineColor: default_axis_color,
+                tickColor: default_axis_color
+            },
+            yAxis: [{
+                labels: {
+                    style: {
+                        color: default_axis_color
+                    },
+                },
+                min: 0,
+                stackLabels: {
+                    enabled: true,
+                    formatter: function() {
+                        return Intl.NumberFormat().format(this.total);
+                    },
+                    style: {
+                        color: default_font_color,
+                        textOutline: false,
+                        fontSize: font_size,
+                        fontWeight: "normal"
+                    }
+                },
+                title: {
+                    text: absolute_damage_per_second,
+                    style: {
+                        color: default_axis_color
+                    }
+                },
+                gridLineWidth: 1,
+                gridLineColor: default_axis_color
+            }, {
+                linkedTo: 0,
+                opposite: true,
+                labels: {
+                    style: {
+                        color: default_axis_color
+                    },
+                },
+                min: 0,
+                stackLabels: {
+                    enabled: true,
+                    formatter: function() {
+                        return Intl.NumberFormat().format(this.total);
+                    },
+                    style: {
+                        color: default_font_color,
+                        textOutline: false,
+                        fontSize: font_size,
+                        fontWeight: "normal"
+                    }
+                },
+                title: {
+                    text: absolute_damage_per_second,
+                    style: {
+                        color: default_axis_color
+                    }
+                },
+                gridLineWidth: 1,
+                gridLineColor: default_axis_color
+            }]
+        };
+        styled_chart.tooltip.backgroundColor = background_color;
+        styled_chart.tooltip.borderColor = axis_color;
+        styled_chart.tooltip.style.color = font_color;
+        styled_chart.xAxis.labels.style.color = font_color;
+        styled_chart.xAxis.gridLineColor = axis_color;
+        styled_chart.xAxis.lineColor = axis_color;
+        styled_chart.xAxis.tickColor = axis_color;
+        styled_chart.yAxis[0].labels.style.color = axis_color;
+        styled_chart.yAxis[0].stackLabels.style.color = font_color;
+        styled_chart.yAxis[0].gridLineColor = axis_color;
+        styled_chart.yAxis[0].lineColor = axis_color;
+        styled_chart.yAxis[0].tickColor = axis_color;
+        styled_chart.yAxis[0].title.style.color = axis_color;
+        styled_chart.yAxis[1].labels.style.color = axis_color;
+        styled_chart.yAxis[1].stackLabels.style.color = font_color;
+        styled_chart.yAxis[1].gridLineColor = axis_color;
+        styled_chart.yAxis[1].lineColor = axis_color;
+        styled_chart.yAxis[1].tickColor = axis_color;
+        styled_chart.yAxis[1].title.style.color = axis_color;
+        Highcharts.chart("unique-id", styled_chart);
+    </script>
+    </body>
+</html>
