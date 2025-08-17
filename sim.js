@@ -58,7 +58,7 @@ function execBloodmallet({profile, single_sim, ptr}) {
         child_process.execSync(`docker build -t bloodytools_custom -`, { input: dockerfile, stdio: ["pipe", "inherit", "inherit"] });
         
     }
-    return execBloodmalletWorker(`${ptr ? "-ptr " : ""}${profile ? "--custom_profile " : ""}${!!ptrApl ? "--custom_apl " : ""}--single_sim="${single_sim}"`, `${single_sim.split(",")[0]}/${single_sim.split(",").slice(1).join("_")}.json`);
+    return execBloodmalletWorker(`--threads=${os.cpus().length} ${ptr ? "-ptr " : ""}${profile ? "--custom_profile " : ""}${!!ptrApl ? "--custom_apl " : ""}--single_sim="${single_sim}"`, `${single_sim.split(",")[0]}/${single_sim.split(",").slice(1).join("_")}.json`);
 }
 
 function getBloodytoolsHash() {
@@ -623,5 +623,6 @@ tools hash: ${toolsHash}`);
     }
     writeRootIndex(opts);
 }
+
 
 simulateAndRebuild(process.argv);
