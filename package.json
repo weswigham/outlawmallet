@@ -7,11 +7,16 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-highcharts": "node -e \"require(`fs`).writeFileSync(`./docs/highcharts.js`, require(`fs`).readFileSync(`./node_modules/highcharts/highcharts.js`))\" && node -e \"require(`fs`).writeFileSync(`./docs/exporting.js`, require(`fs`).readFileSync(`./node_modules/highcharts/modules/exporting.js`))\" && node -e \"require(`fs`).writeFileSync(`./docs/highcharts-3d.js`, require(`fs`).readFileSync(`./node_modules/highcharts/highcharts-3d.js`))\"",
+    "preview": "npx http-server ./docs"
   },
   "author": "Wesley Wigham",
   "license": "MIT",
   "type": "module",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "highcharts": "^11.4.7",
+    "http-server": "*"
+  }
 }

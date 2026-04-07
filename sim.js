@@ -87,7 +87,7 @@ function getSimcHash() {
  * @param {string} outputPath
  */
 function getMaxDps(style, talentString, outputPath) {
-    const data = JSON.parse(fs.readFileSync(`${outputPath}/${style}/talents/${talentString}/secondary_distributions.json`, { encoding: "utf-8" }));
+    const data = JSON.parse(fs.readFileSync(`${outputPath}/${style}/talents/${encodeURIComponent(talentString)}/secondary_distributions.json`, { encoding: "utf-8" }));
     return data.data["custom profile"][data.sorted_data_keys["custom profile"][0]];
 }
 
@@ -98,9 +98,10 @@ function getMaxDps(style, talentString, outputPath) {
 function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHash, baseProfile, noSim, shard, shardCount, outputPath, level, ptr }) {
     if (fs.existsSync(`${outputPath}/${style}/talents`)) {
         fs.readdirSync(`${outputPath}/${style}/talents`).forEach(d => {
+            d = decodeURIComponent(d)
             if (!talentSet.has(d)) {
                 console.log(`${style} talent build ${d} no longer being tracked, removing...`);
-                fs.rmSync(`${outputPath}/${style}/talents/${d}`, { recursive: true, force: true });
+                fs.rmSync(`${outputPath}/${style}/talents/${encodeURIComponent(d)}`, { recursive: true, force: true });
             }
         });
     }
@@ -110,7 +111,7 @@ function collectDataForFightStyle(style, { talents, talentSet, simcHash, toolsHa
         if ((shard !== undefined) && (i % shardCount !== shard)) {
             continue;
         }
-        const dataPath = `${outputPath}/${style}/talents/${talent}/secondary_distributions.json`;
+        const dataPath = `${outputPath}/${style}/talents/${encodeURIComponent(talent)}/secondary_distributions.json`;
         let result;
         try {
             const maybeResult = JSON.parse(fs.readFileSync(dataPath, { encoding: "utf-8" }));
@@ -137,7 +138,7 @@ position=back
 ${baseProfile}
 talents=${talent}`});
             result.title = result.title.replace("Outlaw Rogue", `Outlaw Rogue - ${name}`);
-            fs.mkdirSync(`${outputPath}/${style}/talents/${talent}`, { recursive: true });
+            fs.mkdirSync(`${outputPath}/${style}/talents/${encodeURIComponent(talent)}`, { recursive: true });
             fs.writeFileSync(dataPath, JSON.stringify(result, null, 4));
         }
         // rename "custom profile" back to "baseline" - chart won't render without it being named "baseline"
@@ -148,13 +149,13 @@ talents=${talent}`});
             delete result[field]["custom profile"];
         }
         // always regenerate the html, so any updates made to the chart style are applied immediately on run
-        fs.writeFileSync(`${outputPath}/${style}/talents/${talent}/index.html`,
+        fs.writeFileSync(`${outputPath}/${style}/talents/${encodeURIComponent(talent)}/index.html`,
     `
 <html>
     <head>
         <meta name="description" content="Outlaw Rogue - ${name} secondary distribution sim results">
-        <script src="https://code.highcharts.com/11.4.7/highcharts.js"></script>
-        <script src="https://code.highcharts.com/11.4.7/highcharts-3d.js"></script>
+        <script src="/highcharts.js"></script>
+        <script src="/highcharts-3d.js"></script>
         <script src="https://bloodmallet.com/js/bloodmallet_chart_import.min.js"></script>
         <title>Outlawmallet - Secondary Distribution - ${style} - ${talent}</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -188,7 +189,7 @@ talents=${talent}`});
         data-loaded-data=""
         >Loading...</div>
         <div style="color: #f8f9fa;">
-        <iframe src="https://mimiron.raidbots.com/simbot/render/talents/${talent}?bgcolor=343a40&amp;level=${level}&amp;width=800" width="800" height="570"></iframe>
+        <iframe src="https://www.raidbots.com/simbot/render/talents/${encodeURIComponent(talent)}?bgcolor=343a40&amp;level=${level}&amp;width=800" width="800" height="570"></iframe>
         </div>
         </div>
         <script>
@@ -206,7 +207,7 @@ talents=${talent}`});
  */
 function updateIndex(style, { talents, simcHash, shard, outputPath }) {
     if (shard !== undefined) return; // Shard is producing partial results, don't update aggregate files
-    const rankedData = talents.map(([name, talentString]) => [name, fs.existsSync(`${outputPath}/${style}/talents/${talentString}/secondary_distributions.json`) ? getMaxDps(style, talentString, outputPath) : undefined, talentString]).filter(t => !!t[1]);
+    const rankedData = talents.map(([name, talentString]) => [name, fs.existsSync(`${outputPath}/${style}/talents/${encodeURIComponent(talentString)}/secondary_distributions.json`) ? getMaxDps(style, talentString, outputPath) : undefined, talentString]).filter(t => !!t[1]);
     rankedData.sort((a, b) => b[1] - a[1]);
 
 // This chart layout is roughly extracted from https://bloodmallet.com/js/bloodmallet_chart_import.min.js, just so it visually matches the style of the bloodmallet charts
@@ -215,8 +216,8 @@ function updateIndex(style, { talents, simcHash, shard, outputPath }) {
     fs.writeFileSync(`${outputPath}/${style}/index.html`, `
 <html>
     <head>
-        <script src="https://code.highcharts.com/11.4.7/highcharts.js"></script>
-        <script src="https://code.highcharts.com/11.4.7/modules/exporting.js"></script>
+        <script src="/highcharts.js"></script>
+        <script src="/exporting.js"></script>
         <title>Outlawmallet - ${style} - Talents</title>
         <meta name="description" content="Outlaw Rogue talent dps charts">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -392,7 +393,7 @@ function updateIndex(style, { talents, simcHash, shard, outputPath }) {
                 useHTML: true,
             },
             xAxis: {
-                categories: rankedData.map(t => \`<a class="build-link" target="_blank" href="./talents/$\{t[2]\}/index.html">$\{t[0]\}</a>\`),
+                categories: rankedData.map(t => \`<a class="build-link" target="_blank" href="./talents/$\{encodeURIComponent(encodeURIComponent(t[2]))\}/index.html">$\{t[0]\}</a>\`),
                 labels: {
                     useHTML: true,
                     style: {
@@ -534,7 +535,7 @@ When run with no arguments, this script updates all secondary distribution sim r
 and presentation html files in the docs folder. Available options:
     --help                  Print this message
     --output=[path]         Output directory for these sims = ./docs by default
-    --level=[number]        Level of the character in the sims = 80 by default
+    --level=[number]        Level of the character in the sims = 90 by default
     --ptr                   Enable PTR sims, PTR gear/apl
     --style=[fightstyle]    Just update [fightstyle] results. Eg, castingpatchwerk, castingpatchwerk8, or dungeonslice.
     --no-sim                Use the results cached on disk only, and just update the html presentation files.
@@ -567,7 +568,7 @@ and presentation html files in the docs folder. Available options:
         outputPath = "./docs";
     }
     if (!level) {
-        level = 80;
+        level = 90;
     }
 
     const talentFileContents = fs.readFileSync("./outlaw-talent-builds.simc", { encoding: "utf-8" });

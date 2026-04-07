@@ -2,7 +2,7 @@
 
 [Bloodmallet](https://bloodmallet.com/) is an amazing resource for aggregated simulation results comparing all aspects of a class in WoW. This uses the bloodmallet tools to produce a chart of talent builds ranked by dps with their "optimal" secondary distributions, to help fill the gap left by the lack of talent value simulations post-dragonflight.
 
-This currently sims Dragonflight Season 4 talent builds and their secondary distributions - with currently comitted results visible [here](https://weswigham.github.io/outlawmallet).
+This currently sims Midnight season 1 talent builds and their secondary distributions - with currently comitted results visible [here](https://weswigham.github.io/outlawmallet).
 
 How to use:
 1. Ensure `docker` is installed, and there is a `bloodytools` tagged image containing [bloodytools](https://github.com/Bloodmallet/bloodytools) available in your environment.
