@@ -10,7 +10,7 @@
             body {
                 background-color: #343a40;
                 height: 100%;
-                min-height: 12.5em;
+                min-height: 25em;
                 margin: 0px;
             }
 
@@ -29,7 +29,7 @@
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
 
-        const rankedData = [["AoE Fatebound KiR+Prep | TV+No DP",186942,"CQQAByFP3pExAEG41/8+e6b8fDgx2MYmZmZmtZmZmZmHYmFeAmZbaZw2MAAAAAgZbZmZGmZmZGzMz2AAAAYGADsBzY0Y2AsNhFAgZmBG"],["AoE Fatebound KiR",184386,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster KiR | Lethality",180331,"CQQAByFP3pExAEG41/8+e6b8fDghHYMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAmttZmZMzMzMjZmZbAAAAYMAYMbGGyAzCL0CbMAzMYgB"],["ST Fatebound KiR+Prep",170969,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA"],["ST Trickster KiR",164893,"CQQAByFP3pExAEG41/8+e6b8fDghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAAz22MzMmZmZmxMzsNAAAAMGAMmNDDZgZhFahNGgZGMwA"]];
+        const rankedData = [["AoE Fatebound KiR+Prep | TV+No DP",186942,"CQQAByFP3pExAEG41/8+e6b8fDgx2MYmZmZmtZmZmZmHYmFeAmZbaZw2MAAAAAgZbZmZGmZmZGzMz2AAAAYGADsBzY0Y2AsNhFAgZmBG"],["AoE Fatebound KiR",184386,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster KiR | Lethality",180331,"CQQAByFP3pExAEG41/8+e6b8fDghHYMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAmttZmZMzMzMjZmZbAAAAYMAYMbGGyAzCL0CbMAzMYgB"],["ST Fatebound KiR+Prep | TV+Deft",180108,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMjZmtZmZmZ8AmFegZmx0ygtZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound KiR+Prep",170969,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA"],["ST Trickster KiR",164893,"CQQAByFP3pExAEG41/8+e6b8fDghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAAz22MzMmZmZmxMzsNAAAAMGAMmNDDZgZhFahNGgZGMwA"],["ST Fatebound HO",163631,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZGzsNzMzY8AmNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["AoE Fatebound HO",161099,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZYmtZmZGz8AjNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Trickster KiR+HO | No Guns",143450,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwgZb2MzMjmZ2YWYZbahNGgZmZmBG"],["ST Fatebound KiR+HO | No Guns",139732,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwAbwMGNmNAbTYhBAzMDM"]];
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
         const default_background_color = "#343a40";
