@@ -1,11 +1,29 @@
 copy="ST Fatebound KiR+Prep"
 talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA
 
+copy="ST Fatebound KiR+Prep | TV+Deft"
+talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMjZmtZmZmZ8AmFegZmx0ygtZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM
+
+copy="ST Fatebound HO"
+talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZGzsNzMzY8AmNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM
+
+copy="ST Fatebound KiR+HO | No Guns"
+talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwAbwMGNmNAbTYhBAzMDM
+
 copy="AoE Fatebound KiR"
 talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM
 
+copy="AoE Fatebound KiR+Prep | TV+No DP"
+talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MYmZmZmtZmZmZmHYmFeAmZbaZw2MAAAAAgZbZmZGmZmZGzMz2AAAAYGADsBzY0Y2AsNhFAgZmBG
+
+copy="AoE Fatebound HO"
+talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZYmtZmZGz8AjNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM
+
 copy="ST Trickster KiR"
 talents=CQQAByFP3pExAEG41/8+e6b8fDghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAAz22MzMmZmZmxMzsNAAAAMGAMmNDDZgZhFahNGgZGMwA
+
+copy="ST Trickster KiR+HO | No Guns"
+talents=CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwgZb2MzMjmZ2YWYZbahNGgZmZmBG
 
 copy="AoE Trickster KiR | Lethality"
 talents=CQQAByFP3pExAEG41/8+e6b8fDghHYMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAmttZmZMzMzMjZmZbAAAAYMAYMbGGyAzCL0CbMAzMYgB
