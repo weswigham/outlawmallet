@@ -16,7 +16,7 @@
   "type": "module",
   "dependencies": {},
   "devDependencies": {
-    "highcharts": "^11.4.7",
+    "highcharts": "11.4.7",
     "http-server": "*"
   }
 }
