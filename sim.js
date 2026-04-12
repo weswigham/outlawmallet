@@ -502,8 +502,12 @@ function writeRootIndex({ talents, shard, outputPath }) {
         <meta name="description" content="Outlaw Rogue talent dps charts">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <style>
+            * {
+                background-color: #343a40;
+                font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            }
             iframe {
-                height: 100%;
+                height: 85%;
                 width: 100%;
                 padding: 0;
                 margin: 0;
@@ -513,13 +517,40 @@ function writeRootIndex({ talents, shard, outputPath }) {
             body {
                 margin: 0;
             }
+            summary {
+                color: #f8f9fa;
+                width: 100%;
+                text-align: center;
+            }
+            h1, h2, h3 {
+                width: 100%;
+                text-align: center;
+                margin: 10px;
+            }
+            h1 {
+                color: #f8f9fa;
+                margin-bottom: 2px;
+            }
+            h2 {
+                color: #c4c5c6;
+                margin-bottom: 2px;
+                margin-top: 2px;
+            }
+            h3 {
+                color: #939393;
+                margin-top: 2px;
+            }
         </style>
     </head>
     <body>
-        <iframe src="./castingpatchwerk/index.html"></iframe>
-        <iframe src="./castingpatchwerk3/index.html"></iframe>
-        <iframe src="./castingpatchwerk5/index.html"></iframe>
-        <iframe src="./castingpatchwerk8/index.html"></iframe>
+        <h1>Outlaw Rogue Simulated DPS Charts - ${new Date().toDateString()}</h1>
+        <h2>Click the titles to expand and see the charts</h2>
+        <h3>Click build names to see build details</h3>
+        <details><summary>castingpatchwerk</summary><iframe src="./castingpatchwerk/index.html"></iframe></details>
+        <details><summary>castingpatchwerk3</summary><iframe src="./castingpatchwerk3/index.html"></iframe></details>
+        <details><summary>castingpatchwerk5</summary><iframe src="./castingpatchwerk5/index.html"></iframe></details>
+        <details><summary>castingpatchwerk8</summary><iframe src="./castingpatchwerk8/index.html"></iframe></details>
+        <details><summary>dungeonslice - only updated occasionally</summary><iframe src="./dungeonslice/index.html"></iframe></details>
     </body>
 </html>`);
 }
@@ -608,6 +639,10 @@ tools hash: ${toolsHash}`);
         "castingpatchwerk3",
         // "dungeonslice", // Dungeonslice secondary distribution sims take over an hour per sim, compared with 5-10 minutes for the patchwerks. Ain't nobody got time for that.
     ];
+
+    if (noSim && !style) {
+        fightStyles.push("dungeonslice") // regen dslice index, if it's there
+    }
 
     /**
      * @type {Context}
