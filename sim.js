@@ -235,7 +235,7 @@ function updateIndex(style, { talents, simcHash, shard, outputPath }) {
             }
 
             .build-link:hover {
-                color: magenta;
+                color: #e4d354;
                 text-decoration: underline;
             }
         </style>
@@ -522,6 +522,10 @@ function writeRootIndex({ talents, shard, outputPath }) {
                 color: #f8f9fa;
                 width: 100%;
                 text-align: center;
+            }
+            summary:hover {
+                color: #e4d354;
+                text-decoration: underline;
             }
             h1, h2, h3 {
                 width: 100%;
