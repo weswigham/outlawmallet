@@ -28,7 +28,6 @@
     <body>
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
-
         const rankedData = [["AoE Fatebound KiR+Prep | TV+No DP",489243,"CQQAByFP3pExAEG41/8+e6b8fDgx2MYmZmZmtZmZmZmHYmFeAmZbaZw2MAAAAAgZbZmZGmZmZGzMz2AAAAYGADsBzY0Y2AsNhFAgZmBG"],["AoE Fatebound KiR",472078,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster KiR | Lethality",459652,"CQQAByFP3pExAEG41/8+e6b8fDghHYMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAmttZmZMzMzMjZmZbAAAAYMAYMbGGyAzCL0CbMAzMYgB"],["AoE Fatebound HO",412724,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZYmtZmZGz8AjNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound KiR+Prep | TV+Deft",339778,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMjZmtZmZmZ8AmFegZmx0ygtZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound HO",301622,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZGzsNzMzY8AmNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound KiR+Prep",272952,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA"],["ST Trickster KiR+HO | No Guns",264907,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwgZb2MzMjmZ2YWYZbahNGgZmZmBG"],["ST Fatebound KiR+HO | No Guns",263740,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwAbwMGNmNAbTYhBAzMDM"],["ST Trickster KiR",258174,"CQQAByFP3pExAEG41/8+e6b8fDghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAAz22MzMmZmZmxMzsNAAAAMGAMmNDDZgZhFahNGgZGMwA"]];
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
@@ -268,7 +267,9 @@
         styled_chart.yAxis[1].lineColor = axis_color;
         styled_chart.yAxis[1].tickColor = axis_color;
         styled_chart.yAxis[1].title.style.color = axis_color;
-        Highcharts.chart("unique-id", styled_chart);
+        window.addEventListener("load", function() {
+            Highcharts.chart("unique-id", styled_chart);
+        });
     </script>
     </body>
 </html>

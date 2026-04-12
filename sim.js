@@ -243,7 +243,6 @@ function updateIndex(style, { talents, simcHash, shard, outputPath }) {
     <body>
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
-
         const rankedData = ${JSON.stringify(rankedData)};
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
@@ -483,7 +482,9 @@ function updateIndex(style, { talents, simcHash, shard, outputPath }) {
         styled_chart.yAxis[1].lineColor = axis_color;
         styled_chart.yAxis[1].tickColor = axis_color;
         styled_chart.yAxis[1].title.style.color = axis_color;
-        Highcharts.chart("unique-id", styled_chart);
+        window.addEventListener("load", function() {
+            Highcharts.chart("unique-id", styled_chart);
+        });
     </script>
     </body>
 </html>

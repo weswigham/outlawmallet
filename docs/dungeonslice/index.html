@@ -28,7 +28,6 @@
     <body>
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
-
         const rankedData = [["AoE Fatebound KiR",126783,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster KiR | Lethality",122915,"CQQAByFP3pExAEG41/8+e6b8fDghHYMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAmttZmZMzMzMjZmZbAAAAYMAYMbGGyAzCL0CbMAzMYgB"],["ST Fatebound KiR+Prep",105098,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA"],["ST Trickster KiR",101645,"CQQAByFP3pExAEG41/8+e6b8fDghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAAz22MzMmZmZmxMzsNAAAAMGAMmNDDZgZhFahNGgZGMwA"]];
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
@@ -268,7 +267,9 @@
         styled_chart.yAxis[1].lineColor = axis_color;
         styled_chart.yAxis[1].tickColor = axis_color;
         styled_chart.yAxis[1].title.style.color = axis_color;
-        Highcharts.chart("unique-id", styled_chart);
+        window.addEventListener("load", function() {
+            Highcharts.chart("unique-id", styled_chart);
+        });
     </script>
     </body>
 </html>
