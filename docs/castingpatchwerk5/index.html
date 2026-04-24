@@ -10,7 +10,7 @@
             body {
                 background-color: #343a40;
                 height: 100%;
-                min-height: 25em;
+                min-height: 35em;
                 margin: 0px;
             }
 
@@ -28,7 +28,7 @@
     <body>
         <div id="unique-id" style="height: 100%">Loading...</div>
     <script>
-        const rankedData = [["AoE Fatebound KiR+Prep | TV+No DP",308536,"CQQAByFP3pExAEG41/8+e6b8fDgx2MYmZmZmtZmZmZmHYmFeAmZbaZw2MAAAAAgZbZmZGmZmZGzMz2AAAAYGADsBzY0Y2AsNhFAgZmBG"],["AoE Fatebound KiR",301054,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster KiR | Lethality",293346,"CQQAByFP3pExAEG41/8+e6b8fDghHYMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAmttZmZMzMzMjZmZbAAAAYMAYMbGGyAzCL0CbMAzMYgB"],["ST Fatebound KiR+Prep | TV+Deft",288771,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMjZmtZmZmZ8AmFegZmx0ygtZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["AoE Fatebound HO",261112,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZYmtZmZGz8AjNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound HO",258324,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZGzsNzMzY8AmNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound KiR+Prep",249715,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA"],["ST Trickster KiR",239624,"CQQAByFP3pExAEG41/8+e6b8fDghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAAz22MzMmZmZmxMzsNAAAAMGAMmNDDZgZhFahNGgZGMwA"],["ST Trickster KiR+HO | No Guns",229360,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwgZb2MzMjmZ2YWYZbahNGgZmZmBG"],["ST Fatebound KiR+HO | No Guns",226917,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwAbwMGNmNAbTYhBAzMDM"]];
+        const rankedData = [["AoE Trickster KiR",378380,"CQQAphyM11FofNMFa1K3vFEDUCgx2MGzMzMzsNzMjZmZmNwMmWGsNDAAAAAw2yMzMMzMzMmZmtBAAAwMGAMmFDDZgZhFahNGgZGMwA"],["ST Trickster KiR",351863,"CQQAphyM11FofNMFa1K3vFEDUCgx2MGzMzMzsNzMzMjxsxDwMmWGsNDAAAAAw2yMzMMzMzMmZmtBAAAwMGAMmFDDZgZhFahNGgZGMwA"],["AoE Trickster KiR+FA",348222,"CQQAphyM11FofNMFa1K3vFEDUCgx2MmZmZMzsNzMzMzMjNwMmWGsMDAAAAAw2yMzMMzMzMmZmtBAAAwMGAMmFDDZgZhFahNGgZGMwA"],["AoE Trickster KiR | Cold Blood",337109,"CQQAphyM11FofNMFa1K3vFEDUCgx2MGzMzMzsNzMjZmZmNwMmWGsNDAAAAAw2yMzMzMzMzwYmtBAAAwMGAMmFDDZgZhFahNGgZGMwA"],["AoE Fatebound KiR+Prep | TV+No DP",319960,"CQQAByFP3pExAEG41/8+e6b8fDgx2MYmZmZmtZmZmZmHYmFeAmZbaZw2MAAAAAgZbZmZGmZmZGzMz2AAAAYGADsBzY0Y2AsNhFAgZmBG"],["AoE Fatebound KiR",310441,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMzMzsNzMzYmHYmNGmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound KiR+Prep | TV+Deft",297293,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGzMjZmtZmZmZ8AmFegZmx0ygtZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster HO",296622,"CQQAphyM11FofNMFa1K3vFEDUCgx2MzYmZGzsNzMDmZsZmxMmWGsMDAAAAAw2yMzMMzMzMmZmtBAAAwMGAMmFDDZgZhFahNGgZGMwA"],["AoE Fatebound HO",265469,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZYmtZmZGz8AjNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["ST Fatebound HO",263710,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZGzsNzMzY8AmNzMmx0yglZAAAAAA2WmZmhZmZmxMzsNAAAAmBwAbwMGNmNAbTYhBAzMDM"],["AoE Trickster HO | Cold Blood",262815,"CQQAphyM11FofNMFa1K3vFEDUCgx2MzYmZGzsNzMDmZsZmxMmWGsMDAAAAAw2yMzMzMzMzwYmtBAAAwMGAMmFDDZgZhFahNGgZGMwA"],["ST Fatebound KiR+Prep",251424,"CQQAByFP3pExAEG41/8+e6b8fDgx2MGjZMzsNzMzMjHwsxDMzMLTLD2mBAAAAAMbbzMzwMzMzYmZ2GAAAAGADsBzY0Y2AsNhFGAMzMwA"],["AoE Trickster HO | CB+Subterfuge",245026,"CQQAphyM11FofNMFa1K3vFEDUCgBmxMzMmZbmZGMzYzMjZMtMjZZGAAAAAgtlZmZmZmZmhxMbDAAAgZMAYMLGGyAzCL0CbmBYmBDMA"],["ST Fatebound KiR+HO | No Guns",237559,"CQQAByFP3pExAEG41/8+e6b8fDgx2MzYmZmZmtZmZGwsZmZmx0yglZAAAAAA2WmZmhZGzMmZmtBAAAwMGwAbwMGNmNAbTYhBAzMDM"]];
         const absolute_damage_per_second = "Damage per second";
         const bar_colors = ["#e4d354"];
         const default_background_color = "#343a40";
@@ -158,7 +158,7 @@
                 data: rankedData.map(t => t[1])
             }],
             title: {
-                text: 'castingpatchwerk5 Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/fb843c0705">fb843c07</a>)',
+                text: 'castingpatchwerk5 Outlaw Rogue Talent DPS With Optimal Secondary Stats (simc <a target="_blank" href="https://github.com/simulationcraft/simc/commit/67cc2b2">67cc2b2</a>)',
                 useHTML: true,
                 style: {
                     color: font_color,
